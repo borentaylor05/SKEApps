@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <body>
+        <div class="loading">Loading Your Knowledge Base...</div>
+        <div id="content"></div>
+        <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+        <script type="text/javascript" src="javascripts/main.js"></script>
+        <script type="text/javascript">
+            gadgets.util.registerOnLoadHandler(function() {
+                osapi.jive.core.container.getLaunchContext(function(context) {
+                    console.log('Context: ',context);
+                    var user = window.parent._jive_current_user.ID;
+                    osapi.jive.corev3.people.get({id:user}).execute(function(viewer) {
+                        console.log('viewer', viewer);
+                        main.render(context.jive.content.id, function(){
+                            gadgets.window.adjustHeight();
+                        });
+                        gadgets.window.adjustHeight();
+                    });
+                    gadgets.window.adjustHeight();
+                }); 
+            });
+            setTimeout(function(){
+                gadgets.window.adjustHeight(600);
+                $(".home").removeClass("hide");
+                $(".loading").addClass("hide");
+            },1000);
+        </script>
+        <footer></footer>
+    </body>

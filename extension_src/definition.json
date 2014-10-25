@@ -1,0 +1,16 @@
+{
+    "integrationUser": {
+        "systemAdmin": false
+    },
+    "templates": [],
+    "osapps": [
+        {
+            "name": "SKEApps_Simple App Skeleton",
+            "id": "e804ed3d-149b-536b-8978-bf941f490f9c",
+            "appPath": "e804ed3d149b536b8978bf941f490f9c",
+            "url": "%serviceURL%/osapp/SKEApps/app.xml"
+        }
+    ],
+    "storageDefinitions": [],
+    "jabCartridges": []
+}

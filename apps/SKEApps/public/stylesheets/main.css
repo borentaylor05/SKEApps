@@ -1,0 +1,25 @@
+label{
+	font-weight: 200;
+}
+form input{
+	margin-bottom: 10px;
+}
+.home{
+	padding: 20px;
+}
+.center{
+	text-align: center;
+}
+.formContainer{
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 300px;
+}
+
+.btn{
+	margin-bottom: 200px;
+}
+
+.hide{
+	display: none;
+}
