@@ -14,7 +14,7 @@ var main = {
 				var javascripts = ["typeahead.bundle.min.js",
 									"myTypeahead.js",
 									"bootstrap.min.js",
-									"wwForm.js"];
+									"clients/ww/wwForm.js"];
 				var html = "weight-watchers.html";
 			break;
 			case clients.hyundai:
