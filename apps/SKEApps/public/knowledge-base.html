@@ -7,6 +7,22 @@
         <script type="text/javascript" src="javascripts/jquery.min.js"></script>
         <script type="text/javascript" src="javascripts/main.js"></script>
         <script type="text/javascript">
+        var environment = {
+                current: "",
+                node_cur: "",
+                local: "//localhost:",
+                web_port: "8080",
+                node_port: "8090",
+                dev: "",
+                prod: "",
+                setEnvironment: function(env){
+                    this.current = env+this.web_port;
+                    this.node_cur = env+this.node_cur;
+                },
+                apache_url: "http://ec2-54-191-211-6.us-west-2.compute.amazonaws.com/"
+            }
+            environment.setEnvironment(environment.local);
+            console.log("ENV = "+environment.current);
             gadgets.util.registerOnLoadHandler(function() {
                 osapi.jive.core.container.getLaunchContext(function(context) {
                     console.log('Context: ',context);
