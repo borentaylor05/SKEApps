@@ -9,6 +9,7 @@ var main = {
 			case clients.weight_watchers:
 				var stylesheets = ["bootstrap.min.css", 
 									"ttbs3.css",
+									"clients/ww/custom.css",
 									"clients/ww/ww_mm.css",
 									"main.css"];
 
