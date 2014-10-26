@@ -23,3 +23,7 @@ form input{
 .hide{
 	display: none;
 }
+
+#tags.tt-input{
+	background-color: white !important;
+}

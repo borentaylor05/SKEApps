@@ -222,9 +222,6 @@ max-width: 70%;
 .portal a:visited{
 	color:#153256 !important;
 }
-form{
-	width: 600px;
-}
 form input{
 	display: block;
 }
@@ -242,7 +239,6 @@ form input{
     -webkit-border-radius: 3px;
     -o-border-radius: 3px;
     padding: 5px;
-    width: 600px;
 }
 
 .tt-hint {

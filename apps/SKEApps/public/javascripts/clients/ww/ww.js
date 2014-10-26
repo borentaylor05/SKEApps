@@ -5,26 +5,30 @@ typeahead.setup("#tags", tags);
 var actions = {
 	form_submit: function(form){
 		$(form).submit(function(e){
-			var data = {
-				docNum: $("input[name='docNum']").val(),
-				tags: $("input[name='tags']").val()
-			};
-			console.log(data);
-			console.log("Clicked Submit");
-			osapi.http.get({href:'http://ec2-54-191-211-6.us-west-2.compute.amazonaws.com/php/test-jive-post.php?doc='+data.docNum+'&tags='+data.tags}).execute(function(result) {
-			  if (!result.error) {
-			    console.log(JSON.parse(result.content));
-			  }
-			  else
-			  	console.log(result.error);
-			});
+		  	var postdata = {
+		    	docNum : $("input[name=docNum]").val(),
+		    	tags : $("input[name=tags]").val()
+		  	};
+  			var url = "http://ec2-54-191-211-6.us-west-2.compute.amazonaws.com/php/test-jive-post.php";
+			gadget_helper.post(url, postdata, response.post_call);
 			e.preventDefault();
 		});
+	},
+	process_post: function(data){
+		console.log("Response: "+data);
 	},
 	canvas_view: function(){
 		$("#viewCanvas").click(function(e){
 			gadgets.views.requestNavigateTo('canvas.two', { data1:"canvas2-one", data2:"canvas2-two"});
 			e.preventDefault();
 		});
+	}
+}
+
+
+var response = {
+	post_call: function(obj){
+		res = $.parseJSON(obj.data);
+		console.log(res.doc);
 	}
 }

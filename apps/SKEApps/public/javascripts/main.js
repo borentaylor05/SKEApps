@@ -15,6 +15,7 @@ var main = {
 				var javascripts = ["typeahead.bundle.min.js",
 									"myTypeahead.js",
 									"bootstrap.min.js",
+									"gadget-helper.js",
 									"megamenu.js",
 									"clients/ww/ww.js"];
 
