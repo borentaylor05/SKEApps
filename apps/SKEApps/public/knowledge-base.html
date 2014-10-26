@@ -17,12 +17,13 @@
                 prod: "",
                 setEnvironment: function(env){
                     this.current = env+this.web_port;
-                    this.node_cur = env+this.node_cur;
+                    this.node_cur = env+this.node_port;
                 },
                 apache_url: "http://ec2-54-191-211-6.us-west-2.compute.amazonaws.com/"
-            }
+            };
+            // set current environment!!!
             environment.setEnvironment(environment.local);
-            console.log("ENV = "+environment.current);
+            
             gadgets.util.registerOnLoadHandler(function() {
                 osapi.jive.core.container.getLaunchContext(function(context) {
                     console.log('Context: ',context);

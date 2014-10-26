@@ -9,7 +9,7 @@ var actions = {
 		    	docNum : $("input[name=docNum]").val(),
 		    	tags : $("input[name=tags]").val()
 		  	};
-  			var url = "http://ec2-54-191-211-6.us-west-2.compute.amazonaws.com/php/test-jive-post.php";
+  			var url = environment.apache_url+"/php/test-jive-post.php";
 			gadget_helper.post(url, postdata, response.post_call);
 			e.preventDefault();
 		});

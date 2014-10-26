@@ -18,16 +18,12 @@ var megamenu = {
 	init: function(sourceDoc, searchDoc){
 		// Document ID for source table which builds the JSON obect siteMap
 		//var sourceDocURL = "DOC-368885";
-
-		
-
 		// removes junk and returns clean JSON object
 		$.ajaxSetup({
 			dataFilter: function(data, type) {
 				return type === 'json' ? jQuery.trim(data.replace(/^throw [^;]*;/, '')) : data;
 			}
 		});
-
 		$.ajax({
 			url: "/api/core/v3/contents/?filter=entityDescriptor(102," + (sourceDoc).substring(4) + ")"
 			,dataType: 'json'
@@ -159,6 +155,29 @@ var megamenu = {
 			//console.log(siteMap);
 			if(searchDoc)
 				search(searchDoc);
+	},
+	analyze: {
+		enabled: null,
+		doc_view: function(btn, load){
+			var data = {
+				docNum: btn.attr("id"),
+				title: btn.val(),
+				onLoad: load
+			};
+			var url = environment.apache_url+"/php/test-jive-post.php";
+  			console.log(data);
+		//	gadget_helper.post(url, data, response.post_call);
+		},
+		init_doc: function(){
+			var data = {
+				docNum: $(".LPButtonSelected").attr("id"),
+			 	title: $(".LPButtonSelected").val(),
+			 	onLoad: true
+			};
+  			var url = environment.apache_url+"/php/test-jive-post.php";
+  			console.log(data);
+		//	gadget_helper.post(url, data, response.post_call);
+		}
 	}
 }
 
@@ -371,6 +390,10 @@ function clickBtn(button){
 	$('#tab'+currentPortal).css("display","none");
 	currentPortal = button.id.substring(6);
 	document.getElementById('tabBtn' + currentPortal).className = 'megaHeadButtonSelected';
+	if(megamenu.analyze.enabled){
+		var active = $("#tab"+currentPortal).children().next().children();
+		megamenu.analyze.doc_view(active, true);
+	}
 	$('#tab'+currentPortal).css("display","block");
 }
 
@@ -382,6 +405,8 @@ function landingPageBtn(button){
 	getDocHTML(button.id,currentPortal);
 	document.getElementById(currentDoc[currentPortal]).className = 'LPButtonSelected';
 	resizePortal(currentPortal);
+	if(megamenu.analyze.enabled)
+		megamenu.analyze.doc_view($(button), false);
 }
 
 	
