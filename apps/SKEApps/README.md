@@ -1,3 +1,17 @@
+This App was created for a custom instance of Jive Software.  
+
+Some of our clients operate on the same instance, but each have their own knowledge base, and  each want a custom look and feel for that knowledge base.  To enable Jive 7 to accomplish these tasks, I created this app to do the following:
+	
+	- Allow custom html, css, js files for each client
+		- These files are included in the switch() in main.js
+		- The listed files are dynamically loaded to the DOM
+		- Loaded files are determined by the space_id, the lone param in main.render(space_id) 
+
+
+Since the Jive SDK compliles assets to one file, you cannot dynamically add them in the traditional way.  E.g. you cannot load stylesheets by appending a link element to the head for each stylesheet.  Instead you have to formulate a string to reference each stylesheet and then load them as a single source:
+
+Below are the base strings for dynamically loading .css, .js and .html files:
+	- To see how these are implemented, see main.js
 
 The base string for attaching .js files is: 
 
