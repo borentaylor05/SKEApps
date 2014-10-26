@@ -15,7 +15,7 @@ var partB = "";
 var elementCount;
 
 var megamenu = {
-	init: function(sourceDoc, searchDoc){
+	init: function(sourceDoc){
 		// Document ID for source table which builds the JSON obect siteMap
 		//var sourceDocURL = "DOC-368885";
 		// removes junk and returns clean JSON object
@@ -122,39 +122,23 @@ var megamenu = {
 
 		//  Initialize Menu -------------------------------------------------------------------------------------------------------------------------
 
-			for (var i=0;i<headers.length;i++){
-
-				// Pre-load each portal with the corresponding document
-				
-				$('#portal'+i).html(getDocHTML(siteMap[headers[i]][0].url,i));
-				
-				// Resize generated portals (JIVE i-frame fix to resize base height from the original 1000px)
-				
-				resizePortal(i);
-				
-				// Highlight first page on each tab
-				
-				document.getElementById(siteMap[headers[i]][0].url).className = 'LPButtonSelected';
-				
-				//Builds an array of initial landing page selections.
-				initDoc = siteMap[headers[i]][0].url;
-				currentDoc[i] = initDoc;
-				
-				// Hide all but the first tab
-				
-				if (i > 0){
-					$('#tab'+i).css("display","none");
-				}
-				
+		for (var i=0;i<headers.length;i++){
+			// Pre-load each portal with the corresponding document
+			$('#portal'+i).html(getDocHTML(siteMap[headers[i]][0].url,i));
+			// Resize generated portals (JIVE i-frame fix to resize base height from the original 1000px)
+			gadgets.window.adjustHeight();
+			// Highlight first page on each tab
+			document.getElementById(siteMap[headers[i]][0].url).className = 'LPButtonSelected';
+			//Builds an array of initial landing page selections.
+			initDoc = siteMap[headers[i]][0].url;
+			currentDoc[i] = initDoc;
+			// Hide all but the first tab
+			if (i > 0){
+				$('#tab'+i).css("display","none");
 			}
-			$("#headNav").append('<input type="button" class="megaHeadButton" id="searchTab" value="SEARCH">');
-			//console.log(currentDoc);
-			// Set initial selected tab
-			
-			document.getElementById('tabBtn0').className = 'megaHeadButtonSelected';
-			//console.log(siteMap);
-			if(searchDoc)
-				search(searchDoc);
+		}
+		// Set initial selected tab
+		document.getElementById('tabBtn0').className = 'megaHeadButtonSelected';
 	},
 	analyze: {
 		enabled: null,
@@ -185,128 +169,6 @@ var megamenu = {
 // Open links in new tab
 function newTab(){
 	$("a").attr("target", "_blank");
-}
-
-function search(searchDoc){
-	$("#searchTab").click(function(){
-		var body = '<div class="container">'+
-						'<div class="formContainer">'+
-							'<form id="input">'+
-								'<input type="text" id="doc_name" class="typeahead" placeholder="Begin Typing Doc Name">'+
-								'<input type="submit" class="btn" value="Get Doc">'+
-							'</form>'+
-						'</div>'+
-						'<div id="myDoc" class="hide"></div>'+
-					'</div>';
-		$(".portal").empty().append(body);
-
-		$.ajax({
-			url: "/api/core/v3/contents/?filter=entityDescriptor(102,"+searchDoc.trim().substring(4)+")",
-			dataType: 'json',
-			async: false,
-			success: function(data) {
-				//console.log(data);
-				//checks to see if json given has a populated list property
-				
-				if(data.hasOwnProperty('list') && data.list.length > 0){
-					portalHTML = data.list[0].content.text;
-					$("#myDoc").html(portalHTML);
-					var table = document.getElementsByTagName('tbody');
-					table = table[0];
-					var c = 0;
-					var searchData = [];
-					$(table).children().each(function(){
-						var temp = "";
-						$(this).children().each(function(){
-							temp += $(this).text()+"|~"; 
-						});
-						var t = temp.split("|~");
-						var doc = t[0]+" [~] DOC-"+t[1]+"";
-						searchData.push(doc);
-					});
-				//	console.log(info);
-					$('.typeahead').typeahead({
-						  hint: true,
-						  highlight: true,
-						  minLength: 1
-						},
-						{
-						  name: 'products',
-						  displayKey: 'value',
-						  source: substringMatcher(searchData)
-						});
-					}
-					$("#input").submit(function(e){
-						e.preventDefault();
-						var name = $("#doc_name").val().trim();
-						$("#myDoc").empty().removeClass("hide");
-						var getDoc = name.split("[~]");
-						getSearchDocHTML(getDoc[1]);
-						$("#myDoc").height();
-						$("#myDoc").height(1000);
-						
-						//console.log(portNum);
-						//console.log($('#tab'+portNum).height());
-						//console.log($('#portal'+portNum).height());
-						return false;
-					});
-			},
-			error: function(error) {
-					return error;
-				//	console.log(error);
-
-			}
-		});
-	});
-
-}
-
-var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substrRegex;
- 
-    // an array that will be populated with substring matches
-    matches = [];
- 
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
- 
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        // the typeahead jQuery plugin expects suggestions to a
-        // JavaScript object, refer to typeahead docs for more info
-        matches.push({ value: str });
-      }
-    });
- 
-    cb(matches);
-  };
-};
-
-function getSearchDocHTML(docNum){
-	$.ajax({
-		url: "/api/core/v3/contents/?filter=entityDescriptor(102," + docNum.trim().substring(4) + ")"
-		,dataType: 'json'
-		,async: false
-		,success: function(data) {
-			//console.log(data);
-			//checks to see if json given has a populated list property
-			
-			if(data.hasOwnProperty('list') && data.list.length > 0){
-				portalHTML = data.list[0].content.text;
-			//	console.log(portalHTML);
-				//update current portal with doc
-				$("#myDoc").html(portalHTML);
-			}
-		}
-		,error: function(error) {
-				return error;
-		//		console.log(error);
-
-		}
-	});
 }
 
 // Loops through table to find unique headers and appends them to the headers array
@@ -404,7 +266,7 @@ function landingPageBtn(button){
 	document.getElementById(currentDoc[currentPortal]).className = 'LPButton';	
 	getDocHTML(button.id,currentPortal);
 	document.getElementById(currentDoc[currentPortal]).className = 'LPButtonSelected';
-	resizePortal(currentPortal);
+	gadgets.window.adjustHeight();
 	if(megamenu.analyze.enabled)
 		megamenu.analyze.doc_view($(button), false);
 }

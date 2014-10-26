@@ -5,7 +5,7 @@
       <li class="active"><a id="mmTab" href="#megamenu" role="tab" data-toggle="tab">Mega Menu</a></li>
       <li><a href="#pcForm" role="tab" data-toggle="tab">Post-Call Form</a></li>
       <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-      <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+      <li><a href="#search" role="tab" data-toggle="tab">Search</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -36,7 +36,20 @@
       <div class="tab-pane" id="messages">
         <a href="#" id="viewCanvas">Click to view canvas.html</a>
       </div>
-      <div class="tab-pane" id="settings">...</div>
+
+      <div class="tab-pane" id="search">
+        <div class="container center">
+            <h4>This search looks only through the most used 150 documents.</h4>
+            <p><strong>If you do not select from the dropdown, you will not see any results.</strong></p>
+            <div class="formContainer">
+                <form id="input">
+                    <input class="form-control" type="text" id="doc_name" placeholder="Begin Typing Doc Name">
+                    <input type="submit" class="btn btn-sm btn-success" value="Get Doc">
+                </form>
+            </div>
+            <div id="myDoc" class="hide"></div>
+        </div>
+      </div>
     </div>
 </div>
 

@@ -1,8 +1,5 @@
 
-var tags = [ 'cancellation', 'account info', 'mobile app', 'member services' ];
-typeahead.setup("#tags", tags);
-
-var actions = {
+var ww = {
 	form_submit: function(form){
 		$(form).submit(function(e){
 		  	var postdata = {

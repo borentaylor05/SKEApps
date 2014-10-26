@@ -18,7 +18,9 @@ var main = {
 									"bootstrap.min.js",
 									"gadget-helper.js",
 									"megamenu.js",
-									"clients/ww/ww.js"];
+									"search.js",
+									"clients/ww/ww.js"
+									];
 
 				var html = "weight-watchers.html";
 			break;
@@ -61,12 +63,15 @@ var main = {
 
 var functions = {
 	ww: function(){
-		// actions object in wwForm.js
+		var tags = [ 'cancellation', 'account info', 'mobile app', 'member services' ];
+		typeahead.setup("#tags", tags);
+		// ww object in ww.js
 		megamenu.init("DOC-1011");
-		megamenu.analyze.enabled = true;
+		megamenu.analyze.enabled = true; // push MM analytic data to our DB
 		megamenu.analyze.init_doc();
-		actions.form_submit("#afterCall");
-		actions.canvas_view();
+		ww.form_submit("#afterCall"); // param = form to submit
+		search.typeahead("DOC-1017");
+		ww.canvas_view();
 		$("#mmTab").click(function(){
 			$("#megamenu").empty();
 			megamenu.init("DOC-1011");
