@@ -9,12 +9,15 @@ var main = {
 			case clients.weight_watchers:
 				var stylesheets = ["bootstrap.min.css", 
 									"ttbs3.css",
+									"clients/ww/ww_mm.css",
 									"main.css"];
 
 				var javascripts = ["typeahead.bundle.min.js",
 									"myTypeahead.js",
 									"bootstrap.min.js",
-									"clients/ww/wwForm.js"];
+									"megamenu.js",
+									"clients/ww/ww.js"];
+
 				var html = "weight-watchers.html";
 			break;
 			case clients.hyundai:
@@ -56,7 +59,14 @@ var main = {
 
 var functions = {
 	ww: function(){
+		// actions object in wwForm.js
+		megamenu.init("DOC-1011");
 		actions.form_submit("#afterCall");
+		actions.canvas_view();
+		$("#mmTab").click(function(){
+			$("#megamenu").empty();
+			megamenu.init("DOC-1011");
+		});
 	}
 }
 

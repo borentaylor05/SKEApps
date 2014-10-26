@@ -20,5 +20,11 @@ var actions = {
 			});
 			e.preventDefault();
 		});
+	},
+	canvas_view: function(){
+		$("#viewCanvas").click(function(e){
+			gadgets.views.requestNavigateTo('canvas.two', { data1:"canvas2-one", data2:"canvas2-two"});
+			e.preventDefault();
+		});
 	}
 }
