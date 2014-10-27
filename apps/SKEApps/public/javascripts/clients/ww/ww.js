@@ -6,7 +6,7 @@ var ww = {
 		    	docNum : $("input[name=docNum]").val(),
 		    	tags : $("input[name=tags]").val()
 		  	};
-  			var url = environment.apache_url+"/php/test-jive-post.php";
+  			var url = environment.cloud_dev.apache_url+"/test.php";
 			gadget_helper.post(url, postdata, response.post_call);
 			e.preventDefault();
 		});
