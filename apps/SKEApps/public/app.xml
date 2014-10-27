@@ -18,10 +18,12 @@
 		<Param name="action-contributions">  
 			<![CDATA[ 
 				<action id="com.teletech.client.kb" 
-						path="jive/tabs/places/space" 
-						label="Knowledge Base 2" 
+						path="jive/tabs/places/space?filter=equals(context.ID,2006)" 
+						label="Knowledge Base 3" 
             view="knowledge-base"
         /> 
+
+
 			]]>  
 		</Param>  
 	</Require>  

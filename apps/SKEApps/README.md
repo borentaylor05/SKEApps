@@ -1,3 +1,6 @@
+Most of what's below is now pointless because filters are awesome.  
+Lesson learned: Read docs before trying to hack the system.  
+
 This App was created for a custom instance of Jive Software.  
 
 Some of our clients operate on the same instance, but each have their own knowledge base, and  each want a custom look and feel for that knowledge base.  To enable Jive 7 to accomplish these tasks, I created this app to do the following:

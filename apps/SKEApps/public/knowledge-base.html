@@ -23,7 +23,10 @@
             };
             // set current environment!!!
             environment.setEnvironment(environment.local);
-            
+            var request = osapi.jive.corev3.places.get({tag: "ww"});
+            request.execute(function(res){
+                console.log("Place: ", res);
+            });
             gadgets.util.registerOnLoadHandler(function() {
                 osapi.jive.core.container.getLaunchContext(function(context) {
                     console.log('Context: ',context);
