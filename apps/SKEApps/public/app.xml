@@ -19,7 +19,7 @@
       <!-- NOTE: knowledge-base is view for WEIGHT WATCHERS --> 
 			<![CDATA[ 
 				<action id="com.teletech.client.kb" 
-						path="jive/tabs/places/space?filter=equals(context.ID,2006)" 
+						path="jive/tabs/places/space?filter=equals(context.ID,1698)" 
 						label="Knowledge Base" 
             view="knowledge-base"
         /> 
