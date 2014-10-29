@@ -21,16 +21,12 @@
 				
 
         <action id="com.ww.user.upload" 
-            path="jive/actions/navmenu" 
+            path="jive/actions/places/*" 
             label="Upload Users" 
             view="upload-users"
         />
 
-        <action id="com.sandbox.client.kb" 
-            path="jive/tabs/places/space" 
-            label="Knowledge Base" 
-            view="knowledge-base"
-        />
+       
 
 			]]>  
 		</Param>  
