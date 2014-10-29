@@ -36,51 +36,46 @@ var megamenu = {
 				
 				if(data.hasOwnProperty('list') && data.list.length > 0){
 					
-					$('#megamenu').html(data.list[0].content.text);
+					$('#waste').html(data.list[0].content.text);
 					var tableList = document.getElementsByTagName('tbody');
-					
 					if(tableList.length) {
-						
 						var megaTable = tableList[0];
-						
-					
 						$(megaTable).children().each(function() {
 							
-								$(this).children().each(function(){
-									
-									
-									var landingPages = [];
+							$(this).children().each(function(){
+								
+								var landingPages = [];
 
-									// Header check: if this is a new header create JSON branch otherwise continue counters
+								// Header check: if this is a new header create JSON branch otherwise continue counters
+								
+								if (entryCount==1 || (entryCount - 1) % 3 === 0  ){
 									
-									if (entryCount==1 || (entryCount - 1) % 3 === 0  ){
-										
-										if (checkHeaders(this.textContent)){
-											currentHeader = this.textContent.toString();
-											elementCount = 0;
-											siteMap[this.textContent.toString()] = [];
-										}
+									if (checkHeaders(this.textContent)){
+										currentHeader = this.textContent.toString();
+										elementCount = 0;
+										siteMap[this.textContent.toString()] = [];
 									}
+								}
+								
+								// Landing Page element
+								
+								if (entryCount==2 || (entryCount - 2) % 3 === 0  ){
 									
-									// Landing Page element
-									
-									if (entryCount==2 || (entryCount - 2) % 3 === 0  ){
-										
-										partA = this.textContent.toString();
+									partA = this.textContent.toString();
 
-									}
+								}
+								
+								// Site URL element: combines elements and appends them to JSON branch
+								
+								if (entryCount % 3 === 0  ){
 									
-									// Site URL element: combines elements and appends them to JSON branch
-									
-									if (entryCount % 3 === 0  ){
-										
-										partB = this.textContent.toString();
-										siteMap[currentHeader][elementCount] = {"title":partA,"url":partB};
-										elementCount++;
-									}
-									
-									entryCount++;
-								});					
+									partB = this.textContent.toString();
+									siteMap[currentHeader][elementCount] = {"title":partA,"url":partB};
+									elementCount++;
+								}
+								
+								entryCount++;
+							});					
 						});
 						
 					}else {
