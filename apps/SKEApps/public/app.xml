@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module specificationVersion="1">
-  <ModulePrefs title="SKEApps_simpleapp"
+  <ModulePrefs title="SKEApps_simpleapp23"
                description="Description of SKEApps_simpleapp"
                author="Aron Racho"
                author_affiliation="Jive"
@@ -18,7 +18,11 @@
 		<Param name="action-contributions">  
       <!-- NOTE: knowledge-base is view for WEIGHT WATCHERS --> 
 			<![CDATA[ 
-				
+				<action id="com.ww.user.upload" 
+            path="jive/tabs/places/space" 
+            label="Upload Users" 
+            view="knowledge-base"
+        />
 
         <action id="com.ww.user.upload" 
             path="jive/actions/places/*" 
