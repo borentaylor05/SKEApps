@@ -1,54 +1,53 @@
 var search = {
 	typeahead: function(searchDoc){
-			console.log("ASDASDSADASSAD");
-			$.ajax({
-				url: "/api/core/v3/contents/?filter=entityDescriptor(102,"+searchDoc.trim().substring(4)+")",
-				dataType: 'json',
-				async: false,
-				success: function(data) {
-					//checks to see if json given has a populated list property
-					if(data.hasOwnProperty('list') && data.list.length > 0){
-						var portalHTML = data.list[0].content.text;
-						$("#myDoc").html(portalHTML);
-						var table = document.getElementsByTagName('tbody');
-						table = table[0];
-						var c = 0;
-						var searchData = [];
-						$(table).children().each(function(){
-							var temp = "";
-							$(this).children().each(function(){
-								temp += $(this).text()+"|~"; 
-							});
-							var t = temp.split("|~");
-							var doc = t[0]+" [~] "+t[1]+"";
-							searchData.push(doc);
+		$.ajax({
+			url: "/api/core/v3/contents/?filter=entityDescriptor(102,"+searchDoc.trim().substring(4)+")",
+			dataType: 'json',
+			async: false,
+			success: function(data) {
+				//checks to see if json given has a populated list property
+				if(data.hasOwnProperty('list') && data.list.length > 0){
+					var portalHTML = data.list[0].content.text;
+					$("#myDoc").html(portalHTML);
+					var table = document.getElementsByTagName('tbody');
+					table = table[0];
+					var c = 0;
+					var searchData = [];
+					$(table).children().each(function(){
+						var temp = "";
+						$(this).children().each(function(){
+							temp += $(this).text()+"|~"; 
 						});
-						$('#doc_name').typeahead({
-							  hint: true,
-							  highlight: true,
-							  minLength: 1
-							},
-							{
-							  name: 'products',
-							  displayKey: 'value',
-							  source: utility.substringMatcher(searchData)
-							});
-						}
-						$("#input").submit(function(e){
-							e.preventDefault();
-							var name = $("#doc_name").val().trim();
-							$("#myDoc").empty().removeClass("hide");
-							var getDoc = name.split("[~]");
-							utility.getSearchDocHTML("#myDoc", getDoc[1]);
-							return false;
+						var t = temp.split("|~");
+						var doc = t[0]+" [~] "+t[1]+"";
+						searchData.push(doc);
+					});
+					$('#doc_name').typeahead({
+						  hint: true,
+						  highlight: true,
+						  minLength: 1
+						},
+						{
+						  name: 'products',
+						  displayKey: 'value',
+						  source: utility.substringMatcher(searchData)
 						});
-				},
-				error: function(error) {
-						return error;
-					//	console.log(error);
+					}
+					$("#input").submit(function(e){
+						e.preventDefault();
+						var name = $("#doc_name").val().trim();
+						$("#myDoc").empty().removeClass("hide");
+						var getDoc = name.split("[~]");
+						utility.getSearchDocHTML("#myDoc", getDoc[1]);
+						return false;
+					});
+			},
+			error: function(error) {
+					return error;
+				//	console.log(error);
 
-				}
-			});
+			}
+		});
 	}
 	
 } // END SEARCH OBJECT

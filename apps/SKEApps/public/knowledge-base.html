@@ -18,7 +18,7 @@
             <ul class="nav nav-tabs" role="tablist">
               <li class="active"><a id="mmTab" href="#megamenu" role="tab" data-toggle="tab">Mega Menu</a></li>
               <li><a href="#pcForm" role="tab" data-toggle="tab">Post-Call Form</a></li>
-              <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+              <li><a href="#messages" role="tab" data-toggle="tab">Test Links</a></li>
               <li><a href="#search" role="tab" data-toggle="tab">Search</a></li>
             </ul>
 
@@ -46,9 +46,13 @@
                     </div>
                 </div>
                 <!-- End Post Call Form -->
-
+              <!--  
               <div class="tab-pane" id="messages">
                 <a href="#" id="viewCanvas">Click to view canvas.html</a>
+              </div>
+                -->
+              <div class="tab-pane" id="messages">
+                <a href="#" id="railsTest">Click to get JSON response from Rails app!</a>
               </div>
 
               <div class="tab-pane" id="search">
@@ -93,7 +97,6 @@
                     apache_url: "http://10.48.8.105/jive"
                 }
             };
-            // set current environment!!!
             var request = osapi.jive.corev3.places.get({tag: "ww"});
             request.execute(function(res){
                 console.log("Place: ", res);
@@ -104,7 +107,15 @@
                     var user = window.parent._jive_current_user.ID;
                     osapi.jive.corev3.people.get({id:user}).execute(function(viewer) {
                         console.log('viewer', viewer);
-                        main.run();
+                        var url = window.location.href;
+                        switch(url){
+                            case url.indexOf("weight"):
+                                main.ww.run();
+                            break;
+                            case url.indexOf("jivedemo")
+                                main.ww_coaches.run();
+                            break;
+                        }
                         gadgets.window.adjustHeight();
                     });
                     gadgets.window.adjustHeight();
