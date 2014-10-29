@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<!-- NOTE: This is the view for WEIGHT WATCHERS. Why it's named knowledge-base is a long story, but trust me and DO NOT CHANGE THE NAME --> 
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/admin.css">
+    <body>
+        <div class="container center">
+            <form id="urlInput">
+                <label>Upload data from:</label>
+                <input type="text" class="form-control" placeholder="http://example.com?users=all">
+                <input type="submit" class="btn btn-sm btn-success" value="Upload">
+            </form>
+        </div>
+
+        <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+        <script type="text/javascript" src="javascripts/main.js"></script>
+        <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="javascripts/gadget-helper.js"></script>
+        <script type="text/javascript" src="javascripts/admin.js"></script>
+        <script type="text/javascript">
+            $("#urlInput").submit(function(){
+                osapi.jive.corev3.people.get({  
+                    id: 1,  
+                    fields: "emails,name"  
+                }).execute(function (currentUser) { 
+                    console.log(currentUser) ;
+                    //Save Extended Properties  
+                    currentUser.getExtProps().execute(function (resp) {  
+                        console.log(resp.content); 
+                    });  
+                });
+            });
+            
+        </script>
+        <footer></footer>
+    </body>

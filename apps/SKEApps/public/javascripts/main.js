@@ -1,3 +1,9 @@
+$.ajaxSetup({
+	dataFilter: function(data, type) {
+		return type === 'json' ? jQuery.trim(data.replace(/^throw [^;]*;/, '')) : data;
+	}
+});
+
 var clients = {
 	weight_watchers: 2006,
 	hyundai: 2007
