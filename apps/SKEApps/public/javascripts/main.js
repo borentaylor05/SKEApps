@@ -26,6 +26,7 @@ var main = {
 			megamenu.analyze.init_doc();
 			ww.form_submit("#afterCall"); // param = form to submit
 			search.typeahead("DOC-1567");
+		}
 	}
 }
 
