@@ -19,6 +19,7 @@ var megamenu = {
 		// Document ID for source table which builds the JSON obect siteMap
 		//var sourceDocURL = "DOC-368885";
 		// removes junk and returns clean JSON object
+		console.log("SOURCE: "+sourceDoc);
 		$.ajaxSetup({
 			dataFilter: function(data, type) {
 				return type === 'json' ? jQuery.trim(data.replace(/^throw [^;]*;/, '')) : data;

@@ -108,14 +108,8 @@
                     osapi.jive.corev3.people.get({id:user}).execute(function(viewer) {
                         console.log('viewer', viewer);
                         var url = window.location.href;
-                        switch(url){
-                            case url.indexOf("weight"):
-                                main.ww.run();
-                            break;
-                            case url.indexOf("jivedemo"):
                                 main.ww_coaches.run();
-                            break;
-                        }
+                        
                         gadgets.window.adjustHeight();
                     });
                     gadgets.window.adjustHeight();
