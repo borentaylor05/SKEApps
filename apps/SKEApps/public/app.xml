@@ -25,7 +25,7 @@
         /> 
 
         <action id="com.sandbox.client.kb" 
-            path="jive/tabs/places/group" 
+            path="jive/tabs/places/space" 
             label="Knowledge Base" 
             view="knowledge-base"
         />
