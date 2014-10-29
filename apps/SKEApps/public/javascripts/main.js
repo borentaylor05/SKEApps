@@ -15,7 +15,7 @@ var main = {
 			search.typeahead("DOC-1017");
 			ww.rails_get();
 		}
-	}
+	},
 	ww_coaches: {
 		run: function(){
 			var tags = [ 'cancellation', 'account info', 'mobile app', 'member services' ];
