@@ -1,5 +1,5 @@
 {
-    "clientUrl": "http://supersonic-dagger-25-154577.usw1-2.nitrousbox.com",
+    "clientUrl": "http://localhost",
     "port": "8090",
     "development" : true
 }

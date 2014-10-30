@@ -8,7 +8,8 @@ var search = {
 				//checks to see if json given has a populated list property
 				if(data.hasOwnProperty('list') && data.list.length > 0){
 					var portalHTML = data.list[0].content.text;
-					$("#myDoc").html(portalHTML);
+					console.log(searchDoc);
+					$("#waste").html(portalHTML);
 					var table = document.getElementsByTagName('tbody');
 					table = table[0];
 					var c = 0;

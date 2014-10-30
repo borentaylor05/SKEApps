@@ -107,7 +107,9 @@
                     var user = window.parent._jive_current_user.ID;
                     osapi.jive.corev3.people.get({id:user}).execute(function(viewer) {
                         console.log('viewer', viewer);
-                        var url = window.location.href;
+                        // get jive url
+                        var url = window.parent.location.href;
+                        console.log(url);
                            if(url.indexOf("weight") >= 0)
                               main.ww.run();   
                            else if(url.indexOf("demo") >= 0)

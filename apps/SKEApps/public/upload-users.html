@@ -20,18 +20,24 @@
         <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
         <script type="text/javascript" src="javascripts/gadget-helper.js"></script>
         <script type="text/javascript" src="javascripts/admin.js"></script>
+        <script type="text/javascript" src="javascripts/api.js"></script>
         <script type="text/javascript">
             $("#urlInput").submit(function(){
-                osapi.jive.corev3.people.get({  
-                    id: 1,  
-                    fields: "emails,name"  
-                }).execute(function (currentUser) { 
-                    console.log(currentUser) ;
-                    //Save Extended Properties  
-                    currentUser.getExtProps().execute(function (resp) {  
-                        console.log(resp.content); 
-                    });  
-                });
+                var data = {
+                   "emails" : [ {
+                       "value" : "taylorboren@teletech.com",
+                       "jive_label" : "Email"
+                   } ],
+                   "jive" : {
+                       "password" : "password",
+                       "username" : "TestMe"
+                   },
+                   "name" : {
+                       "familyName" : "Test",
+                       "givenName" : "Me"
+                   }
+                 };
+                 api.create.person(data, true);
             });
             
         </script>

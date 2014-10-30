@@ -20,7 +20,7 @@
 			<![CDATA[ 
 				<action id="com.ww.user.upload" 
             path="jive/tabs/places/space" 
-            label="Upload Users" 
+            label="Knowledge Base" 
             view="knowledge-base"
         />
 
@@ -29,8 +29,6 @@
             label="Upload Users" 
             view="upload-users"
         />
-
-       
 
 			]]>  
 		</Param>  
