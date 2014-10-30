@@ -7,14 +7,6 @@
     "clientSecret": "cqga3kwsx0t77s8l0qlugpbbekohnu7t.s",
     "jiveCommunity": "jivedemo-teletech-gtm-alliances.jiveon.com"
   },
-  "http://localhost:8080": {
-    "jiveUrl": "http://localhost:8080",
-    "version": "post-samurai",
-    "tenantId": "a30f8635-f541-4445-aebb-035c1c1ccea8-dev",
-    "clientId": "a4mflivzsqjwk45k0zx65g6opgjga0m5.i",
-    "clientSecret": "hvhk6wv17ah72msfmxyf9av9ahw4e5an.s",
-    "jiveCommunity": "localhost:8080"
-  },
   "https://sandbox.jiveon.com": {
     "jiveUrl": "https://sandbox.jiveon.com",
     "version": "post-samurai",
@@ -22,5 +14,13 @@
     "clientId": "rhg5zyppl45ifik8ipf1qa7sud3ug8dd.i",
     "clientSecret": "3h92871wzkg3tt0n2tqz2e51l6hf8hps.s",
     "jiveCommunity": "sandbox.jiveon.com"
+  },
+  "http://localhost:8080": {
+    "jiveUrl": "http://localhost:8080",
+    "version": "post-samurai",
+    "tenantId": "a30f8635-f541-4445-aebb-035c1c1ccea8-dev",
+    "clientId": "fuve2lbjv543uhgy010w2hxzjirw9zzz.i",
+    "clientSecret": "666e4k0gbvlr5t9pmzjbo08porfz2ywk.s",
+    "jiveCommunity": "localhost:8080"
   }
 }
