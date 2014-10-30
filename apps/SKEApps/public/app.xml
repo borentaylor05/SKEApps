@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module specificationVersion="1">
-  <ModulePrefs title="SKEApps_simpleapp23"
-               description="Description of SKEApps_simpleapp"
-               author="Aron Racho"
-               author_affiliation="Jive"
-               author_email="aron.racho@jivesoftware.com">
+  <ModulePrefs title="SKEApps"
+               description="SKEApps"
+               author="Taylor Boren"
+               author_affiliation="TeleTech"
+               author_email="taylorboren@teletech.com">
 
     <!-- Commonly used features -->
     <Require feature="dynamic-height" />
@@ -18,7 +18,7 @@
 		<Param name="action-contributions">  
       <!-- NOTE: knowledge-base is view for WEIGHT WATCHERS --> 
 			<![CDATA[ 
-				<action id="com.ww.user.upload" 
+				<action id="com.ww.kb" 
             path="jive/tabs/places/space" 
             label="Knowledge Base" 
             view="knowledge-base"
