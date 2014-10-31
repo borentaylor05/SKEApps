@@ -20,6 +20,9 @@ var main = {
 			ww.form_submit("#afterCall"); // param = form to submit
 			search.typeahead("DOC-1017");
 			ww.rails_get();
+			$("#access").click(function(){
+				$(this).parent().addClass("hide");
+			});
 		}
 	},
 	ww_coaches: {

@@ -23,11 +23,11 @@ var ww = {
 	rails_get: function(data){
 		$("#railsTest").click(function(e){
 			var data = {
-				one: 1,
-				two: 2,
-				three: 3
+				name: "Test",
+				tab_type: "Test",
+				user_id: 1234567
 			}
-			gadget_helper.post("http://localhost:3000/megamenu/click.json", data, response.test_rails);
+			gadget_helper.post("http://localhost:3000/tabs.json", data, response.test_rails);
 			e.preventDefault();
 		});
 	}
