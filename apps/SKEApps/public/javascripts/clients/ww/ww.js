@@ -1,15 +1,61 @@
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) 
+        	return c.substring(name.length,c.length);
+    }
+    return "";
+}
+
+
 
 var ww = {
-	form_submit: function(form){
+	begin_call: function(jive_user_id){
+		$("#access").click(function(e){
+			e.preventDefault();
+			$(this).parent().addClass("hide");
+			api.get.person(jive_user_id, function(user){
+				var call_id = getCookie("call");
+
+				data = {
+					employee_id: user.jive.username,
+					jive_user_id: jive_user_id,
+					username: user.displayName,
+					call_id: call_id
+				};
+				gadget_helper.post(environment.currentRails+"/calls.json", data, response.start_call)
+			});
+
+		});
+	},
+	end_call: function(form, jive_user_id){
 		$(form).submit(function(e){
 		  	var postdata = {
 		    	docNum : $("input[name=docNum]").val(),
-		    	tags : $("input[name=tags]").val()
+		    	tags : $("input[name=tags]").val(),
+		    	jive_user_id: jive_user_id
 		  	};
-  			var url = environment.cloud_dev.apache_url+"/test.php";
-			gadget_helper.post("http://localhost:3000/click.json", postdata, response.post_call);
+		  	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+			gadget_helper.post(environment.currentRails+"/end-call", postdata, response.write);
 			e.preventDefault();
 		});
+	},
+	analyze: function(jive_user_id){
+		$(".nav.nav-tabs > li").each(function(){
+			$(this).click(function(){
+				analyze.tab.click($(this), "Bootstrap", jive_user_id);				
+			});
+		});
+		$(".megaHeadButton").each(function(){
+			$(this).click(function(){
+				analyze.tab.click($(this), "MM", jive_user_id);
+			});
+		});
+		// button/doc analysis in megamenu.js
+		// search analysis in search.js
 	},
 	process_post: function(data){
 		console.log("Response: "+data);
@@ -27,7 +73,7 @@ var ww = {
 				tab_type: "Test",
 				user_id: 1234567
 			}
-			gadget_helper.post("http://localhost:3000/tabs.json", data, response.test_rails);
+			gadget_helper.post(environment.currentRails+"/tabs.json", data, response.test_rails);
 			e.preventDefault();
 		});
 	}
@@ -35,9 +81,9 @@ var ww = {
 
 
 var response = {
-	post_call: function(obj){
-		
-		console.log(obj);
+	start_call: function(obj){
+		var call = JSON.parse(obj.text);
+		document.cookie = "call="+call.id+"; expires=Thu, 01 Jan 2015 00:00:00 UTC";
 	},
 	test_rails: function(obj){
 		console.log(obj);

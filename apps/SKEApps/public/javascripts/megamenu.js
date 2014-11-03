@@ -13,6 +13,7 @@ var currentHeader = "";
 var partA = "";
 var partB = "";
 var elementCount;
+var jive_user_id = window.parent._jive_current_user.ID;
 
 var megamenu = {
 	init: function(sourceDoc){
@@ -250,7 +251,8 @@ function clickBtn(button){
 	document.getElementById('tabBtn' + currentPortal).className = 'megaHeadButtonSelected';
 	if(megamenu.analyze.enabled){
 		var active = $("#tab"+currentPortal).children().next().children();
-		megamenu.analyze.doc_view(active, true);
+		analyze.tab.click($("#tab"+currentPortal), jive_user_id);
+		analyze.doc.click($(active), jive_user_id, true); // counts as doc view and tab click
 	}
 	$('#tab'+currentPortal).css("display","block");
 }
@@ -263,8 +265,9 @@ function landingPageBtn(button){
 	getDocHTML(button.id,currentPortal);
 	document.getElementById(currentDoc[currentPortal]).className = 'LPButtonSelected';
 	gadgets.window.adjustHeight();
-	if(megamenu.analyze.enabled)
-		megamenu.analyze.doc_view($(button), false);
+	if(megamenu.analyze.enabled){
+		analyze.doc.click($(button), jive_user_id, false);
+	}
 }
 
 	

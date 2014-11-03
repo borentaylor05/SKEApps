@@ -1,5 +1,6 @@
+
 var search = {
-	typeahead: function(searchDoc){
+	typeahead: function(searchDoc, jive_user_id){
 		$.ajax({
 			url: "/api/core/v3/contents/?filter=entityDescriptor(102,"+searchDoc.trim().substring(4)+")",
 			dataType: 'json',
@@ -40,6 +41,8 @@ var search = {
 						$("#myDoc").empty().removeClass("hide");
 						var getDoc = name.split("[~]");
 						utility.getSearchDocHTML("#myDoc", getDoc[1]);
+						analyze.search.submit($(this), jive_user_id); // disable to turn off search analysis
+						$("#doc_name").val("");
 						return false;
 					});
 			},

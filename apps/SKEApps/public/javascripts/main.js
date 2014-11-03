@@ -10,19 +10,18 @@ var clients = {
 }
 var main = {
 	ww: {
-		run: function(){
+		run: function(jive_user_id){
 			var tags = [ 'cancellation', 'account info', 'mobile app', 'member services' ];
 			typeahead.setup("#tags", tags);
 			// ww object in ww.js
 			megamenu.init("DOC-1011");
 			megamenu.analyze.enabled = true; // push MM analytic data to our DB
 			megamenu.analyze.init_doc();
-			ww.form_submit("#afterCall"); // param = form to submit
-			search.typeahead("DOC-1017");
+			search.typeahead("DOC-1017", jive_user_id);
+			ww.begin_call(jive_user_id);
+			ww.analyze(jive_user_id);
+			ww.end_call("#afterCall", jive_user_id); // param = form to submit
 			ww.rails_get();
-			$("#access").click(function(){
-				$(this).parent().addClass("hide");
-			});
 		}
 	},
 	ww_coaches: {

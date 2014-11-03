@@ -6,8 +6,6 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/ttbs3.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/clients/ww/custom.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/clients/ww/ww_mm.css">
     <body>
         <div class="loading">Loading Your Knowledge Base...</div>
         <div id="waste" class="hide"></div>
@@ -32,18 +30,7 @@
 
                 <!-- Start Post Call Form -->
                 <div class="tab-pane fade" id="pcForm">
-                    <div class="container jumbotron">
-                        <div class="formContainer center">
-                            <h2>WW Post-Call Form</h2>
-                            <form id="afterCall" type="post">
-                                <label>Document ID</label>
-                                <input class="form-control" type="text" name="docNum">
-                                <label>Call Tags</label>
-                                <input style="background-color: white;" id="tags" class="form-control" type="text" name="tags">
-                                <input id="submit" type="submit" class="btn btn-lg btn-primary">
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-- End Post Call Form -->
               <!--  
@@ -56,21 +43,10 @@
               </div>
 
               <div class="tab-pane" id="search">
-                <div class="container center">
-                    <h4>This search looks only through the most used 150 documents.</h4>
-                    <p><strong>If you do not select from the dropdown, you will not see any results.</strong></p>
-                    <div class="formContainer">
-                        <form id="input">
-                            <input class="form-control" type="text" id="doc_name" placeholder="Begin Typing Doc Name">
-                            <input type="submit" class="btn btn-sm btn-success" value="Get Doc">
-                        </form>
-                    </div>
-                    <div id="myDoc" class="hide"></div>
-                </div>
+                
               </div>
             </div>
         </div>
-        <div class="overlay"><button id="access" class="btn btn-lg btn-primary absolute-ctr">Access Knowledge Base</button></div>
 
         <!-- END CUSTOM CLIENT HTML -->
 
@@ -79,11 +55,8 @@
         <script type="text/javascript" src="javascripts/myTypeahead.js"></script>
         <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
         <script type="text/javascript" src="javascripts/gadget-helper.js"></script>
-        <script type="text/javascript" src="javascripts/analyze.js"></script>
-        <script type="text/javascript" src="javascripts/megamenu.js"></script>
         <script type="text/javascript" src="javascripts/search.js"></script>
         <script type="text/javascript" src="javascripts/api.js"></script>
-        <script type="text/javascript" src="javascripts/clients/ww/ww.js"></script>
         <script type="text/javascript" src="javascripts/main.js"></script>
         <script type="text/javascript">
             var environment = {
@@ -105,27 +78,9 @@
                     apache_url: "http://10.48.8.105/jive"
                 }
             };
-            environment.setCurrentRails(environment.local.url+environment.local.rails_port);
-            var request = osapi.jive.corev3.places.get({tag: "ww"});
-            request.execute(function(res){
-                console.log("Place: ", res);
-            });
+            environment.setCurrentRails(environment.local.url+environment.local.rails_port
             gadgets.util.registerOnLoadHandler(function() {
-                osapi.jive.core.container.getLaunchContext(function(context) {
-                    console.log('Context: ',context);
-                    var user = window.parent._jive_current_user.ID;
-                    osapi.jive.corev3.people.get({id:user}).execute(function(viewer) {
-                        // get jive url
-                        var url = window.parent.location.href;
-                           if(url.indexOf("weight") >= 0)
-                              main.ww.run(user);   
-                           else if(url.indexOf("demo") >= 0)
-                              main.ww_coaches.run();                           
-                        
-                        gadgets.window.adjustHeight();
-                    });
-                    gadgets.window.adjustHeight();
-                }); 
+
             });
             setTimeout(function(){
                 gadgets.window.adjustHeight(600);

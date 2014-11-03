@@ -30,6 +30,11 @@
             view="upload-users"
         />
 
+        <action id="com.admin.vis.data" 
+            path="jive/actions/places/*" 
+            label="Call Data" 
+            view="call-data"
+        />
        
 
 			]]>  
@@ -92,7 +97,7 @@
   <Content type="html" view="canvas" href="canvas.html" preferred_height="400" />
   <Content type="embedded" view="canvas.two" href="canvas.html" preferred_height="400" />
   <Content type="html" view="knowledge-base" href="knowledge-base.html" />
-  <Content type="html" view="upload-users" href="upload-users.html" />
+  <Content type="html" view="call-data" href="call-data.html" />
   <!--
   <Content type="html" view="home" href="home.html" preferred_height="400" />
   <Content type="html" view="canvas" href="canvas.html" />
