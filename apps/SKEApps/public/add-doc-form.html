@@ -1,0 +1,115 @@
+<link rel="stylesheet" href="stylesheets/bootstrap.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="stylesheets/clients/ww/wwc-add-doc.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="stylesheets/main.css" type="text/css" media="screen" />
+
+<div class="container">
+	<div class="formContainer">
+		<form id="add-doc">
+			<div id="select-menu" class="btn-group btn-input clearfix">
+			<label>Primary Topic</label>
+			  <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+			    <span data-bind="label">Select One</span> <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a class="primary" id="1" href="#">Program</a></li>
+			    <li><a class="primary" id="2" href="#">Product</a></li>
+			    <li><a class="primary" id="3" href="#">Policies</a></li>
+			    <li><a class="primary" id="4" href="#">Tech</a></li>
+			  </ul>
+			</div>
+			<div id="select-menu-2" class="btn-group btn-input clearfix hide">
+			<label>Secondary Topic</label>
+			  <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+			    <span data-bind="secondary-label">Select One</span> <span class="caret"></span>
+			  </button>
+			  <ul id="secondary-menu" class="dropdown-menu" role="menu">
+			  </ul>
+			</div>
+			<div id="select-menu-3" class="btn-group btn-input clearfix hide">
+			<label>Subtopic</label>
+			  <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+			    <span data-bind="subtopic-label">Select One</span> <span class="caret"></span>
+			  </button>
+			  <ul id="subtopic-menu" class="dropdown-menu" role="menu">
+			  </ul>
+			</div>
+			<label class="h-label hide">Document Name / Title</label>
+			<input type="text" name="name" id="name" class="form-control hide" placeholder="Type the name you want the document to go by...">
+			<label class="h-label hide">Document Link</label>
+			<input type="text" name="link" id="link" class="form-control hide" placeholder="Paste the link to the document...">
+			<label class="h-label hide">Does this document live in Jive?</label>
+			<div class="native hide" id="native-div">
+				<button class="btn btn-sm btn-success" id="native-yes">
+					Yes
+				</button>
+				<button class="btn btn-sm btn-danger" id="native-no">
+					No
+				</button>
+			</div>
+			<div id="sub" class="center">
+				<button id="submit" class="btn btn-md btn-primary hide">Place Doc in KB</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="overlay hide"></div>
+
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascripts/gadget-helper.js"></script>
+<script type="text/javascript" src="javascripts/clients/ww/wwc-add-doc.js"></script>
+<script type="text/javascript">
+	var environment = {
+		remote_server: "http://10.48.8.105"
+	}
+	var new_doc = {
+		name: "",
+		link: "",
+		subtopic_id: null,
+		native: null
+	}
+
+	gadgets.util.registerOnLoadHandler(function(){
+		gadgets.window.adjustHeight();
+		gadgets.window.adjustWidth();
+
+		$(".primary").each(function(){
+			$(this).on("click touch", function(){
+				$("span[data-bind='label']").text("Selected: "+$(this).text());
+				var id = $(this).attr("id");
+				wwc_go.getSecondary(id);
+			});
+		});
+
+		$("#native-yes").on("click touch", function(e){
+			e.preventDefault();
+			$("#native-no span").removeClass("fa-check");
+			$(this).prepend("<span class='fa fa-check'></span>");
+			new_doc.native = true;
+		});
+		$("#native-no").on("click touch", function(e){
+			e.preventDefault();
+			$("#native-yes span").removeClass("fa-check");
+			$(this).prepend("<span class='fa fa-check'></span>");
+			new_doc.native = false;
+		});
+		$("#submit").on("click touch", function(e){
+			e.preventDefault();
+			new_doc.name = $("#name").val();
+			new_doc.link = $("#link").val();
+			console.log(new_doc);
+			if(new_doc.name.length < 3 || new_doc.link.length < 5 || new_doc.native == null || new_doc.subtopic_id == null){
+				$("#sub").prepend("<div class='alert alert-danger'>All fields require a valid value.</div>");
+				setTimeout(gadgets.window.adjustHeight(), 2000);
+			}
+			else{
+				gadget_helper.post(environment.remote_server+"/apps/new-doc.php", new_doc, function(data){
+					console.log(data);
+				});
+			}
+			
+		});
+	});
+	
+</script>

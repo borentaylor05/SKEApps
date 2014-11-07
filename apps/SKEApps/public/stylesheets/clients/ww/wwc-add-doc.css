@@ -1,0 +1,36 @@
+.container{
+	padding: 20px;
+	width: 600px;
+	height: 600px;
+	overflow: scroll;
+}
+
+span[data-bind='label'],span[data-bind='secondary-label'], span[data-bind='subtopic-label']{
+	margin-right: 20px;
+}
+
+#select-menu, #select-menu-2, #select-menu-3{
+	width: 100%;
+}
+
+ul.dropdown-menu{
+	width: 100%;
+	text-align: center;
+}
+
+.hide{
+	display: none;
+}
+
+label{
+	margin-top: 15px;
+}
+
+#submit{
+	margin-top: 10px;
+}
+
+.alert{
+	padding: 2px;
+	margin-top: 3px;
+}

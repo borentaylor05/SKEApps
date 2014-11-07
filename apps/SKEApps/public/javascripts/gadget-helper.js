@@ -3,11 +3,9 @@ var gadget_helper = {
 		var params = {};
 		params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.POST;
   		params[gadgets.io.RequestParameters.POST_DATA] = gadgets.io.encodeValues(data);
-  		console.log(params);
   		gadgets.io.makeRequest(url, callback, params);
 	},
 	get: function(url, params, callback){
-		var params = {};
 		params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.GET;
   		gadgets.io.makeRequest(url, callback, params);
 	}

@@ -17,23 +17,21 @@
 	<Require feature="actions">  
 		<Param name="action-contributions">  
       <!-- NOTE: knowledge-base is view for WEIGHT WATCHERS --> 
-			<![CDATA[ 
-				<action id="com.ww.kb" 
-            path="jive/tabs/places/space" 
+      <!-- 
+        <action id="com.ww.kb" 
+            path="jive/tabs/places/space?filter=equals(context.ID,1011)" 
             label="Knowledge Base" 
-            view="knowledge-base"
+            view="wwc-knowledge-base"
         />
 
-        <action id="com.ww.user.upload" 
-            path="jive/actions/places/*" 
-            label="Upload Users" 
-            view="upload-users"
-        />
+      -->
+			<![CDATA[ 
+				
 
-        <action id="com.admin.vis.data" 
-            path="jive/actions/places/*" 
-            label="Call Data" 
-            view="call-data"
+        <action id="com.wwc.new-kb-doc" 
+            path="jive/actions/content/document" 
+            label="Add Doc to KB" 
+            view="add-doc-form"
         />
        
 
@@ -94,10 +92,11 @@
   -->
 
   <!-- To begin development, remove the hello view and uncomment the home and canvas views below -->
-  <Content type="html" view="canvas" href="canvas.html" preferred_height="400" />
+  <Content type="html" view="canvas" href="canvas.html" preferred_height="900" />
   <Content type="embedded" view="canvas.two" href="canvas.html" preferred_height="400" />
   <Content type="html" view="knowledge-base" href="knowledge-base.html" />
   <Content type="html" view="call-data" href="call-data.html" />
+  <Content type="html" view="add-doc-form" href="add-doc-form.html" />
   <!--
   <Content type="html" view="home" href="home.html" preferred_height="400" />
   <Content type="html" view="canvas" href="canvas.html" />
