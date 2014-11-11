@@ -1,7 +1,6 @@
 
 var wwc = {
 	display_docs: function(data, callback){
-		console.log(data);
 		for(var i = 0 ; i < data.length ; i++){
 			var items = "";
 			for(var x = 0 ; x < data[i].docs.length ; x++){
@@ -47,7 +46,6 @@ var wwc = {
 			i++;
 			docs.push(doc);
 		});
-		console.log(docs);
 		return docs;
 	},
 	view_doc: function(link){
@@ -95,6 +93,16 @@ var wwc = {
 			$(".navigation, .doc-container").empty();
 			e.preventDefault();
 		});
+	},
+	back: function(){
+		$(".sub-subtopics").each(function(){
+			$(this).addClass("hide");
+		});
+		$(".content").each(function(){
+			$(this).addClass("hide");
+		});
+		$(".prime-container").removeClass("hide");
+		$("#back").addClass("hide");
 	}
 }
 
@@ -106,7 +114,6 @@ function buildNav(docs){
 		if(docs[i].current)
 			curDoc = docs[i];
 	}
-	console.log(curDoc);
 	if(curDoc.index === 0 && docs.length > 1){
 		var right = "<a id='next' href='#' class='arrow'><i class='fa fa-arrow-circle-right fa-2x'></i><span class='r'>"+docs[curDoc.index + 1].title+"</span></a>";
 		$(".navigation").append(right);
