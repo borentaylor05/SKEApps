@@ -70,6 +70,7 @@ var wwc = {
 			url: "/api/core/v3/contents/?filter=entityDescriptor(102,"+doc.substring(4)+")",
 			type: "get",
 			async: false,
+			beforeSend: function(xhr) { xhr.setRequestHeader("Authorization", "Basic " + btoa("taylorboren@teletech.com:!QAZ2wsx"); };
 			dataType: "json",
 			success: function(data){
 				if(data.hasOwnProperty('list') && data.list.length > 0){
