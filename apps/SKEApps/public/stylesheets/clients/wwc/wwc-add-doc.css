@@ -23,7 +23,7 @@ ul.dropdown-menu{
 }
 
 label{
-	margin-top: 15px;
+	margin-top: 7px;
 }
 
 #submit{
@@ -33,4 +33,9 @@ label{
 .alert{
 	padding: 2px;
 	margin-top: 3px;
+}
+
+.tiny{
+	font-size: .8em;
+	font-weight: 300;
 }

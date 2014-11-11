@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="stylesheets/bootstrap.min.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="stylesheets/clients/ww/wwc-add-doc.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="stylesheets/clients/wwc/wwc-add-doc.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="stylesheets/main.css" type="text/css" media="screen" />
 
 <div class="container">
@@ -38,6 +38,8 @@
 			<input type="text" name="name" id="name" class="form-control hide" placeholder="Type the name you want the document to go by...">
 			<label class="h-label hide">Document Link</label>
 			<input type="text" name="link" id="link" class="form-control hide" placeholder="Paste the link to the document...">
+			<label class="h-label hide">Original Link <span class="tiny">(not required)</span></label>
+			<input type="text" name="original" id="original" class="form-control hide" placeholder="If originally hosted outside Jive (e.g. Pocket Guide)">
 			<label class="h-label hide">Does this document live in Jive?</label>
 			<div class="native hide" id="native-div">
 				<button class="btn btn-sm btn-success" id="native-yes">
@@ -58,7 +60,7 @@
 <script type="text/javascript" src="javascripts/jquery.min.js"></script>
 <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="javascripts/gadget-helper.js"></script>
-<script type="text/javascript" src="javascripts/clients/ww/wwc-add-doc.js"></script>
+<script type="text/javascript" src="javascripts/clients/wwc/wwc-add-doc.js"></script>
 <script type="text/javascript">
 	var environment = {
 		remote_server: "http://10.48.8.105"

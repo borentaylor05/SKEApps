@@ -92,8 +92,7 @@ ul{
 	float: left;
 }
 .cat-container{
-	max-width: 900px;
-	float:right;
+	max-width: 1500px;
 	position:relative;
 	text-align:left;
 }
@@ -206,4 +205,9 @@ a.cat > div > p{
 	max-width: 90%;
 	margin-right: auto;
 	margin-left: auto;
+}
+.original{
+	font-size: .4em;
+	letter-spacing: 0px;
+	margin-left: 30px;
 }

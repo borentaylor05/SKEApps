@@ -1,12 +1,13 @@
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="stylesheets/clients/ww/wwc.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="stylesheets/clients/wwc/wwc.css" type="text/css" media="screen" />
 
 <div class="cust-container center">
 	<a href="#" class="hide" id="back"><img src="/resources/statics/1094/back2.png"> </a>
+	<div class="prime-container">
 		<!--  START PROGRAM CATEGORIES  -->
 
 		<h1 class="header">Program</h1>
-		<div class="cat-container" class="clearfix">
+		<div class="cat-container clearfix" >
 			<div class="center">
 				<ul class="left program categories">
 					<li>
@@ -163,21 +164,68 @@
 			</div>
 		</div>
 		<!-- END TECH CATEGORIES -->
+	</div>
+
+		<div class="content hide program-content">
+			<div class="center">
+				<i class="fa fa-5x"></i>
+				<h1 class="content-header"></h1>
+			</div>
+		</div>
 
 	</div>
 	<div class="overlay hide">
 		<i id="close" class="fa fa-close fa-3x"></i>
 		<div class="navigation center"></div>
-		<div class="doc-container">
-		</div>
+		<div class="doc-container"></div>
 	</div>
 
 
 <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="javascripts/gadget-helper.js"></script>
+<script type="text/javascript" src="javascripts/clients/wwc/wwc-main.js"></script>
+
 <script type="text/javascript">
+	$.ajaxSetup({
+		dataFilter: function(data, type) {
+			return type === 'json' ? jQuery.trim(data.replace(/^throw [^;]*;/, '')) : data;
+		}
+	});
+
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
+
+		$(".cat").each(function(){
+			$(this).on("click touch", function(e){
+				var icon = $(this).children().find("i").first().attr("class").split(" ")[1];
+				var header = $(this).children().find("p").first().text();
+				var id = $(this).attr("id");
+				console.log(header);
+				$("div.program-content div.center i.fa").addClass(icon);
+				$("div.program-content div.center h1").text(header);
+				var rand = Math.floor(Math.random() * 1000000);
+				gadget_helper.get("http://10.48.8.105/apps/get-structure.php?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
+					data = JSON.parse(data.data);
+					wwc.display_docs(data, function(){
+						$("a.sub-header").each(function(){
+							$(this).on("click touch", function(e){
+								e.preventDefault();
+								wwc.view_doc($(this));
+								wwc.close_doc();
+							});
+						});	
+					});
+					$(".prime-container").addClass("hide");
+					$(".content").removeClass("hide");
+				});
+				
+				return false;
+			});
+		});
+
+		
+
 	});
 
 </script>
