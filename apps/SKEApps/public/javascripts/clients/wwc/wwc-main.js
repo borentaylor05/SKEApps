@@ -67,7 +67,7 @@ var wwc = {
 	},
 	get_doc_html: function(doc, curDoc, callback){
 		$.ajax({
-			url: "/api/core/v3/contents/?filter=entityDescriptor(102,"+doc.substring(4)+")",
+			url: "https://weightwatchers.jiveon.com/api/core/v3/contents/?filter=entityDescriptor(102,"+doc.substring(4)+")",
 			type: "get",
 			async: false,
 			beforeSend: function(xhr) { xhr.setRequestHeader("Authorization", "Basic " + btoa("taylorboren@teletech.com:!QAZ2wsx"); };
