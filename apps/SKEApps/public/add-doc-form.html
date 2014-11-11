@@ -40,6 +40,8 @@
 			<input type="text" name="link" id="link" class="form-control hide" placeholder="Paste the link to the document...">
 			<label class="h-label hide">Original Link <span class="tiny">(not required)</span></label>
 			<input type="text" name="original" id="original" class="form-control hide" placeholder="If originally hosted outside Jive (e.g. Pocket Guide)">
+			<label class="h-label hide">Summary</label>
+			<textarea id="summary" class="form-control hide" placeholder="Type a brief summary of the document"></textarea>
 			<label class="h-label hide">Does this document live in Jive?</label>
 			<div class="native hide" id="native-div">
 				<button class="btn btn-sm btn-success" id="native-yes">
@@ -63,11 +65,12 @@
 <script type="text/javascript" src="javascripts/clients/wwc/wwc-add-doc.js"></script>
 <script type="text/javascript">
 	var environment = {
-		remote_server: "http://10.48.8.105"
+		remote_server: "http://ec2-54-191-211-6.us-west-2.compute.amazonaws.com"
 	}
 	var new_doc = {
 		name: "",
 		link: "",
+		summary: "",
 		subtopic_id: null,
 		native: null
 	}
@@ -100,6 +103,7 @@
 			e.preventDefault();
 			new_doc.name = $("#name").val();
 			new_doc.link = $("#link").val();
+			new_doc.summary = $("#summary").val();
 			console.log(new_doc);
 			if(new_doc.name.length < 3 || new_doc.link.length < 5 || new_doc.native == null || new_doc.subtopic_id == null){
 				$("#sub").prepend("<div class='alert alert-danger'>All fields require a valid value.</div>");

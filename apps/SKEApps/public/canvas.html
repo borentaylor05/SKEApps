@@ -170,6 +170,7 @@
 			<div class="center">
 				<i class="fa fa-5x"></i>
 				<h1 class="content-header"></h1>
+				<div class="content-container"></div>
 			</div>
 		</div>
 
@@ -191,13 +192,16 @@
 			return type === 'json' ? jQuery.trim(data.replace(/^throw [^;]*;/, '')) : data;
 		}
 	});
-
+	var environment = {
+		remote_server: "htpp://ec2-54-191-211-6.us-west-2.compute.amazonaws.com"
+	}
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
 
 		$(".cat").each(function(){
 			$(this).on("click touch", function(e){
+				$(".content-container").empty();
 				var icon = $(this).children().find("i").first().attr("class").split(" ")[1];
 				var header = $(this).children().find("p").first().text();
 				var id = $(this).attr("id");
@@ -205,9 +209,9 @@
 				$("div.program-content div.center i.fa").addClass(icon);
 				$("div.program-content div.center h1").text(header);
 				var rand = Math.floor(Math.random() * 1000000);
-				gadget_helper.get("http://10.48.8.105/apps/get-structure.php?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
+				gadget_helper.get(environment.remote_server+"/apps/get-structure.php?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
 					data = JSON.parse(data.data);
-					wwc.display_docs(data, function(){
+					wwc.list_docs(data, function(){
 						$("#back").removeClass("hide");
 						$("a.sub-header").each(function(){
 							$(this).on("click touch", function(e){

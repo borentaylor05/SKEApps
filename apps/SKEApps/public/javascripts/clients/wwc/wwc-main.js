@@ -1,6 +1,6 @@
 
 var wwc = {
-	display_docs: function(data, callback){
+	list_docs: function(data, callback){
 		for(var i = 0 ; i < data.length ; i++){
 			var items = "";
 			for(var x = 0 ; x < data[i].docs.length ; x++){
@@ -20,11 +20,11 @@ var wwc = {
 					var rel = data[i].docs[x].link;
 				}
 
-				items += "<li><h3><a rel="+rel+" target="+target+" href='"+href+"' id='"+id+"' class='"+classes+"'>"+data[i].docs[x].name+"</a></h3><p class='summary'>Test Summary blah blah blah</p></li>";
+				items += "<li><h3><a rel="+rel+" target="+target+" href='"+href+"' id='"+id+"' class='"+classes+"'>"+data[i].docs[x].name+"</a></h3><p class='summary'>"+data[i].docs[x].summary+"</p></li>";
 			}
 			var list = "<ul class='subtopics left'>"+items+"</ul>";
-			$(".content").append("<h2 class='cat-header left'>"+data[i].name+"</h2>");
-			$(".content").append(list);
+			$(".content-container").append("<h2 class='cat-header left'>"+data[i].name+"</h2>");
+			$(".content-container").append(list);
 		}
 		callback();
 	},

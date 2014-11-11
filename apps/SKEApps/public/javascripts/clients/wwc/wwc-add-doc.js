@@ -41,9 +41,10 @@ var dropdown = {
 				$("span[data-bind='subtopic-label']").text("Selected: "+$(this).text());
 				var id = $(this).attr("id");
 				new_doc.subtopic_id = id;
-				$("#name, #link, #native-div, #original, .h-label, #submit").removeClass("hide");
+				$("#name, #link, #native-div, #original, .h-label, #submit, #summary").removeClass("hide");
 				setTimeout(gadgets.window.adjustHeight(), 2000);
 			});
 		});
+		setTimeout(gadgets.window.adjustHeight(), 5000);
 	}
 }
