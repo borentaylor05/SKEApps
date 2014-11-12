@@ -5,7 +5,7 @@
 	margin-right: auto;
 	font-family: Myriad Pro, sans-serif;
 	height: 100%;
-	min-height: 1330px;
+	min-height: 1500px;
 	overflow-y:scroll; 
 	background-color: #333;
 	border-radius: 3px;
@@ -168,6 +168,7 @@ a.cat > div > p{
 	overflow-y: scroll;
 	z-index: 1001;
 	padding: 20px;
+	height: 100%;
 }
 #close{
 	float: left;
