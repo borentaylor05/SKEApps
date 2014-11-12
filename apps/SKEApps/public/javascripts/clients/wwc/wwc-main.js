@@ -66,25 +66,20 @@ var wwc = {
 		}
 	},
 	get_doc_html: function(doc, curDoc, callback){
-		$.ajax({
-			url: "https://weightwatchers.jiveon.com/api/core/v3/contents/?filter=entityDescriptor(102,"+doc.substring(4)+")",
-			type: "get",
-			async: false,
-			dataType: "json",
-			success: function(data){
-				if(data.hasOwnProperty('list') && data.list.length > 0){
-					$(".doc-container").html(data.list[0].content.text);
-					$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="'+curDoc.original+'">Click here to see original document.</a></span></h1>');
-					$(".doc-container").append("</br>");
-					if($(".overlay").hasClass("hide"))
-						$(".overlay").removeClass("hide");
-					gadgets.window.adjustHeight();
-				}
-				callback();
-			},
-			error: function(err){
-				console.log(err.responseText);
+
+		osapi.jive.corev3.contents.get({
+		     entityDescriptor: "102,"+doc.substring(4)
+		 }).execute(function(data){
+		 	console.log(data);
+			if(data.hasOwnProperty('list') && data.list.length > 0){
+				$(".doc-container").html(data.list[0].content.text);
+				$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="'+curDoc.original+'">Click here to see original document.</a></span></h1>');
+				$(".doc-container").append("</br>");
+				if($(".overlay").hasClass("hide"))
+					$(".overlay").removeClass("hide");
+				gadgets.window.adjustHeight();
 			}
+			callback();
 		});
 	},
 	close_doc: function(){
