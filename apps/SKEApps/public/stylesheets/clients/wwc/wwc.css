@@ -164,11 +164,11 @@ a.cat > div > p{
 	margin-left: 30px;
 	margin-right: 20px;
 	margin-top: 50px;
+	height: 100%;
 	overflow-x: scroll; 
 	overflow-y: scroll;
 	z-index: 1001;
 	padding: 20px;
-	height: 100%;
 }
 #close{
 	float: left;
