@@ -115,13 +115,8 @@ var wwc = {
 		$(".jive-link-wiki-small").each(function(){
 			$(this).click(function(e){
 				e.preventDefault();
-				var doc = wwc.get_doc_from_link($(this).attr("href"));
-				var index = doc.indexOf("#");
-				if(index > 0){
-					var section = doc.substring(index, doc.length);
-					console.log(section);
-					window.location = section;
-				}
+			    var top = document.getElementById("tothetop").offsetTop; //Getting Y of target element
+			    window.scrollTo(0, top);                        //Go there.
 			});
 		});
 	}
@@ -149,7 +144,7 @@ function buildNav(docs){
 		var both = left + right;
 		$(".navigation").append(both);
 	}
-	$(".navigation").append("<h3>"+curDoc.header+"</h3>");
+	$(".navigation").append("<h3>"+curDoc.header+"<span id='tothetop'></span></h3>");
 	$("#prev").on("click touch", function(e){
 		e.preventDefault();
 		$(".navigation, .doc-container").empty();
