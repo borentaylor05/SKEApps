@@ -199,6 +199,11 @@
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
+		$(".jive-link-anchor-small").each(function(){
+			$(this).click(function(){
+				$(".navigation").css("top", "70");
+			});
+		});
 		$(".cat").each(function(){
 			$(this).on("click touch", function(e){
 				$(".content-container").empty();

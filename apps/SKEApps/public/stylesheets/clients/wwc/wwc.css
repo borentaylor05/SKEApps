@@ -156,8 +156,9 @@ a.cat > div > p{
     z-index: 1000;
     padding: 15px;
     border-radius: 4px;
-    margin: 20px;
+/*    margin: 20px; */
     font-family: Myriad Pro, sans-serif;
+
   /*  height: 100%;*/
 }
 .doc-container{
@@ -208,6 +209,13 @@ a.cat > div > p{
 	max-width: 90%;
 	margin-right: auto;
 	margin-left: auto;
+	position: absolute;
+	top: 10;
+	left: 0;
+	right: 0;
+}
+.navigation > h3{
+	margin-bottom: 0px;
 }
 .original{
 	font-size: .4em;
