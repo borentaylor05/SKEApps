@@ -119,6 +119,7 @@ var wwc = {
 				var index = doc.indexOf("#");
 				if(index > 0){
 					var section = doc.substring(index, doc.length);
+					console.log(section);
 					window.location = section;
 				}
 			});
