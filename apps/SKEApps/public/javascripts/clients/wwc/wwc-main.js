@@ -17,7 +17,7 @@ var wwc = {
 					var id = this.get_doc_from_link(data[i].docs[x].link);
 					var target = "_self";
 				}
-				if(data[i].docs[x].original_doc > 5)
+				if(data[i].docs[x].original_doc.length > 5)
 					var rel = data[i].docs[x].original_doc;
 				else					
 					var rel = data[i].docs[x].link;
