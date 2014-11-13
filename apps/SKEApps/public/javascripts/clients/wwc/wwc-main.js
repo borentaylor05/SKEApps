@@ -79,12 +79,8 @@ var wwc = {
 				$(".doc-container").append("</br>");
 				if($(".overlay").hasClass("hide"))
 					$(".overlay").removeClass("hide");
-				$(".jive-link-anchor-small").each(function(){
-					$(this).click(function(){
-						console.log("CLICK");
-						$(".navigation").css("top", "65px");
-					});
-				});
+				wwc.nav_fix();
+				wwc.link_fix();
 				gadgets.window.adjustHeight();
 			}
 			callback();
@@ -112,6 +108,19 @@ var wwc = {
 			$(this).click(function(){
 				console.log("CLICK");
 				$(".navigation").css("top", "65px");
+			});
+		});
+	},
+	link_fix: function(){
+		$(".jive-link-wiki-small").each(function(){
+			$(this).click(function(e){
+				e.preventDefault();
+				var doc = wwc.get_doc_from_link($(this).attr("href"));
+				var index = doc.indexOf("#");
+				if(index > 0){
+					var section = doc.substring(index, doc.length);
+					window.location = section;
+				}
 			});
 		});
 	}
