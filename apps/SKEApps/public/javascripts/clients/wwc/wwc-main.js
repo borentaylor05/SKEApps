@@ -130,6 +130,7 @@ function buildNav(docs){
 		if(docs[i].current)
 			curDoc = docs[i];
 	}
+	$(".navigation")append('<i id="close" class="fa fa-close fa-3x"></i>');
 	if(curDoc.index === 0 && docs.length > 1){
 		var right = "<a id='next' href='#' class='arrow'><i class='fa fa-arrow-circle-right fa-2x'></i><span class='r'>"+docs[curDoc.index + 1].title+"</span></a>";
 		$(".navigation").append(right);
