@@ -82,7 +82,7 @@ var wwc = {
 				$(".jive-link-anchor-small").each(function(){
 					$(this).click(function(){
 						console.log("CLICK");
-						$(".navigation").css("top", "70px");
+						$(".navigation").css("top", "65px");
 					});
 				});
 				gadgets.window.adjustHeight();
@@ -111,7 +111,7 @@ var wwc = {
 		$(".jive-link-anchor-small").each(function(){
 			$(this).click(function(){
 				console.log("CLICK");
-				$(".navigation").css("top", "70px");
+				$(".navigation").css("top", "65px");
 			});
 		});
 	}
