@@ -52,10 +52,12 @@
 				</button>
 			</div>
 			<div id="sub" class="center">
+				<div id="error" class="alert alert-danger hide"></div>
 				<button id="submit" class="btn btn-md btn-primary hide">Place Doc in KB</button>
 			</div>
 		</form>
 	</div>
+	<div id="success" class="alert alert-success hide"></div>
 </div>
 <div class="overlay hide"></div>
 
@@ -65,7 +67,7 @@
 <script type="text/javascript" src="javascripts/clients/wwc/wwc-add-doc.js"></script>
 <script type="text/javascript">
 	var environment = {
-		remote_server: "http://ec2-54-191-211-6.us-west-2.compute.amazonaws.com"
+		remote_server: "https://safe-brushlands-8409.herokuapp.com"
 	}
 	var new_doc = {
 		name: "",
@@ -104,17 +106,21 @@
 			new_doc.name = $("#name").val();
 			new_doc.link = $("#link").val();
 			new_doc.summary = $("#summary").val();
+			new_doc.original_doc = $("#original").val();
 			console.log(new_doc);
-			if(new_doc.name.length < 3 || new_doc.link.length < 5 || new_doc.native == null || new_doc.subtopic_id == null){
-				$("#sub").prepend("<div class='alert alert-danger'>All fields require a valid value.</div>");
+			gadget_helper.post(environment.remote_server+"/apps/wwc/content/new.json", new_doc, function(data){
+				console.log(data);
+				data = JSON.parse(data.text);
+				if(data.status === "1"){
+					$(".formContainer").addClass("hide");
+					$("#success").removeClass("hide").text(data.message);
+					setTimeout(gadgets.window.adjustHeight(), 1000);
+				}
+				else{
+					$("#error").removeClass("hide").text(data.message);
+				}
 				setTimeout(gadgets.window.adjustHeight(), 2000);
-			}
-			else{
-				gadget_helper.post(environment.remote_server+"/apps/new-doc.php", new_doc, function(data){
-					console.log(data);
-				});
-			}
-			
+			});			
 		});
 	});
 	

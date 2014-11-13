@@ -1,0 +1,27 @@
+
+
+Performance Cost:
+
+	Medium performance: $34.50 / month
+	Medium-High: $178.50 / month
+	High: Anywhere from $400 - $1000
+
+Database Cost: 
+	
+	Medium database: $50 / month
+	Medium-High (max 1 hour down / month: $200
+	High (max 15 min downtime / month): $350
+
+Support
+	
+	Free for basic - $0
+	Anything other than free support starts at $1000 / month
+
+
+Total:
+
+	Lowest: $84.50
+	Middle: $378.50
+	Highest: $1000+
+
+Recommendation:  Start at lowest, monitor performance, scale as needed.

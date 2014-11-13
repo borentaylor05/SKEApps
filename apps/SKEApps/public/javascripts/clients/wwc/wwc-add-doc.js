@@ -1,10 +1,10 @@
 
 var wwc_go = {
 	getSecondary: function(id){
-		gadget_helper.get(environment.remote_server+"/apps/doc-dropdown.php?primary="+id.toString(), {}, dropdown.createSecondaryDropdown);
+		gadget_helper.get(environment.remote_server+"/apps/wwc/doc-dropdown.json?primary="+id.toString(), {}, dropdown.createSecondaryDropdown);
 	},
 	getSubtopic: function(id){
-		gadget_helper.get(environment.remote_server+"/apps/doc-dropdown.php?secondary="+id.toString(), {}, dropdown.createSubtopicDropdown);
+		gadget_helper.get(environment.remote_server+"/apps/wwc/doc-dropdown.json?secondary="+id.toString(), {}, dropdown.createSubtopicDropdown);
 	}
 }
 
