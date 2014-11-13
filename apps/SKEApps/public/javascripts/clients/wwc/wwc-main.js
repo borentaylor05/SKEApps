@@ -55,7 +55,6 @@ var wwc = {
 		var curDoc = this.get_current_doc(docs);
 		this.get_doc_html(link.attr("id"), curDoc, function(){
 			buildNav(docs);
-			this.nav_fix()
 			gadgets.window.adjustHeight();
 		});
 	},
@@ -80,6 +79,12 @@ var wwc = {
 				$(".doc-container").append("</br>");
 				if($(".overlay").hasClass("hide"))
 					$(".overlay").removeClass("hide");
+				$(".jive-link-anchor-small").each(function(){
+					$(this).click(function(){
+						console.log("CLICK");
+						$(".navigation").css("top", "70px");
+					});
+				});
 				gadgets.window.adjustHeight();
 			}
 			callback();
