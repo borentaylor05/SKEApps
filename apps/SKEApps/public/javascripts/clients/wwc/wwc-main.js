@@ -10,15 +10,17 @@ var wwc = {
 					var classes="link-header";
 					var id = "";
 					var target = "_blank";
-					var rel = data[i].docs[x].original_doc;
 				}
 				else{
 					var href = "#";
 					var classes = "link-header sub-header";
 					var id = this.get_doc_from_link(data[i].docs[x].link);
 					var target = "_self";
-					var rel = data[i].docs[x].link;
 				}
+				if(data[i].docs[x].original_doc > 5)
+					var rel = data[i].docs[x].original_doc;
+				else					
+					var rel = data[i].docs[x].link;
 
 				items += "<li><h3><a rel="+rel+" target="+target+" href='"+href+"' id='"+id+"' class='"+classes+"'>"+data[i].docs[x].name+"</a></h3><p class='summary'>"+data[i].docs[x].summary+"</p></li>";
 			}
