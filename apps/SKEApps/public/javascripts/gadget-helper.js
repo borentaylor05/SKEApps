@@ -6,6 +6,7 @@ var gadget_helper = {
   		gadgets.io.makeRequest(url, callback, params);
 	},
 	get: function(url, params, callback){
+		console.log(url);
 		params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.GET;
   		gadgets.io.makeRequest(url, callback, params);
 	}
