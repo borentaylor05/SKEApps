@@ -177,8 +177,9 @@
 
 	</div>
 	<div class="overlay hide">
-		<i id="close" class="fa fa-close fa-3x"></i>
-		<div class="navigation center"></div>
+		<div class="navigation center">
+			<i id="close" class="fa fa-close fa-3x"></i>
+		</div>
 		<div class="doc-container"></div>
 	</div>
 
@@ -199,12 +200,6 @@
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
-		$(".jive-link-anchor-small").each(function(){
-			$(this).click(function(){
-				console.log("CLICK");
-				$(".navigation").css("top", "70px");
-			});
-		});
 		$(".cat").each(function(){
 			$(this).on("click touch", function(e){
 				$(".content-container").empty();
