@@ -35,7 +35,7 @@
         />
 
         <action id="com.wwc.kb-us" 
-            path="jive/tabs/places/group" 
+            path="jive/tabs/places/space" 
             label="Knowledge Base" 
             view="wwc-kb"
         />
