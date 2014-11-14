@@ -100,7 +100,7 @@ var wwc = {
 		$(".content").each(function(){
 			$(this).addClass("hide");
 		});
-		$(".prime-container").removeClass("hide");
+		$(".prime-container, #secondary-container").removeClass("hide");
 		$("#back").addClass("hide");
 	},
 	nav_fix: function(){
