@@ -73,7 +73,7 @@ var wwc = {
 		osapi.jive.corev3.contents.get({
 		     entityDescriptor: "102,"+doc.substring(4)
 		 }).execute(function(data){
-		 	console.log(data);
+		 //	console.log(data);
 			if(data.hasOwnProperty('list') && data.list.length > 0){
 				$(".doc-container").html(data.list[0].content.text);
 				$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="'+curDoc.original+'">Click here to see original document.</a></span></h1>');
