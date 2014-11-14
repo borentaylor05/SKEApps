@@ -33,6 +33,12 @@
             label="Add Doc to KB" 
             view="add-doc-form"
         />
+
+        <action id="com.wwc.kb-us" 
+            path="jive/tabs/places/space" 
+            label="Knowledge Base" 
+            view="wwc-kb"
+        />
        
 
 			]]>  
@@ -97,6 +103,7 @@
   <Content type="html" view="knowledge-base" href="knowledge-base.html" />
   <Content type="html" view="call-data" href="call-data.html" />
   <Content type="html" view="add-doc-form" href="add-doc-form.html" />
+  <Content type="html" view="wwc-kb" href="wwc-kb.html" />
   <!--
   <Content type="html" view="home" href="home.html" preferred_height="400" />
   <Content type="html" view="canvas" href="canvas.html" />

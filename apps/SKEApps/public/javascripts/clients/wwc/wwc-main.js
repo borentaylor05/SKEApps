@@ -17,7 +17,7 @@ var wwc = {
 					var id = this.get_doc_from_link(data[i].docs[x].link);
 					var target = "_self";
 				}
-				if(data[i].docs[x].original_doc.length > 5)
+				if(data[i].docs[x].original_doc && data[i].docs[x].original_doc.length > 5)
 					var rel = data[i].docs[x].original_doc;
 				else					
 					var rel = data[i].docs[x].link;
@@ -25,7 +25,7 @@ var wwc = {
 				items += "<li><h3><a rel="+rel+" target="+target+" href='"+href+"' id='"+id+"' class='"+classes+"'>"+data[i].docs[x].name+"</a></h3><p class='summary'>"+data[i].docs[x].summary+"</p></li>";
 			}
 			var list = "<ul class='subtopics left'>"+items+"</ul>";
-			$(".content-container").append("<h2 class='cat-header left'>"+data[i].name+"</h2>");
+			$(".content-container").append("<h2 class='cat-header left'><i class='fa fa-folder-open fa-2x prog'></i>&nbsp"+data[i].name+"</h2>");
 			$(".content-container").append(list);
 		}
 		callback();
@@ -105,15 +105,15 @@ var wwc = {
 	},
 	nav_fix: function(){
 		$(".jive-link-anchor-small").each(function(){
-			$(this).click(function(){
-				console.log("CLICK");
+			$(this).on("click touch",function(e){
+				e.preventDefault();
 				$(".navigation").css("top", "65px");
 			});
 		});
 	},
 	link_fix: function(){
 		$(".jive-link-wiki-small").each(function(){
-			$(this).click(function(e){
+			$(this).on("click touch",function(e){
 				e.preventDefault();
 			    var top = document.getElementById("tothetop").offsetTop; //Getting Y of target element
 			    window.scrollTo(0, top);                        //Go there.
