@@ -109,7 +109,7 @@
 			new_doc.summary = $("#summary").val();
 			new_doc.original_doc = $("#original").val();
 			console.log(new_doc);
-			gadget_helper.post(environment.local+"/apps/wwc/content/new.json", new_doc, function(data){
+			gadget_helper.post(environment.remote_server+"/apps/wwc/content/new.json", new_doc, function(data){
 				console.log(data);
 				data = JSON.parse(data.text);
 				if(data.status === "1"){
