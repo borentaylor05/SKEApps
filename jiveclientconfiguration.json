@@ -1,4 +1,4 @@
 {
-    "clientUrl": "https://nameless-basin-7685.herokuapp.com",
+    "clientUrl": "http://localhost",
     "development" : true
 }

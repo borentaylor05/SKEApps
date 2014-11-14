@@ -155,7 +155,6 @@
 	</div>
 	<div class="content hide program-content">
 		<div class="center">
-			<i class="fa fa-5x"></i>
 			<h1 class="content-header"></h1>
 			<div class="content-container"></div>
 		</div>
@@ -181,6 +180,7 @@
 			return type === 'json' ? jQuery.trim(data.replace(/^throw [^;]*;/, '')) : data;
 		}
 	});
+	var globalIcon = "";
 	var environment = {
 		local: "http://localhost:3000",
 		remote: "https://safe-brushlands-8409.herokuapp.com"
@@ -216,11 +216,11 @@
 				var icon = $(this).find("i").first().attr("class").split(" ")[1];
 				var header = $(this).find("p").first().text();
 				var id = $(this).attr("id");
-				console.log(header);
-				$("div.program-content div.center i.fa").addClass(icon);
+				$("#h-icon").remove();
+				$("div.program-content div.center").prepend('<i id="h-icon" class="fa '+icon+' fa-5x"></i>');
 				$("div.program-content div.center h1").text(header);
 				var rand = Math.floor(Math.random() * 1000000);
-				gadget_helper.get(environment.remote+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
+				gadget_helper.get(environment.local+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
 					console.log(data)
 					data = JSON.parse(data.data);
 					wwc.list_docs(data, function(){
