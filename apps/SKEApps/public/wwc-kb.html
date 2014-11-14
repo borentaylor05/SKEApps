@@ -212,7 +212,9 @@
 		});
 		$(".cat").each(function(){
 			$(this).on("click touch", function(e){
+				$(".prime-container, #secondary-container").addClass("hide");
 				$(".content-container").empty();
+				$(".content-container").append("<div class='spinner'><i class='fa fa-refresh fa-spin'></i></div>");
 				var icon = $(this).find("i").first().attr("class").split(" ")[1];
 				var header = $(this).find("p").first().text();
 				var id = $(this).attr("id");
@@ -224,6 +226,7 @@
 					console.log(data)
 					data = JSON.parse(data.data);
 					wwc.list_docs(data, function(){
+						$(".spinner").addClass("hide");
 						$("#back").removeClass("hide");
 						$("a.sub-header").each(function(){
 							$(this).on("click touch", function(e){
@@ -233,7 +236,6 @@
 							});
 						});	
 					});
-					$(".prime-container, #secondary-container").addClass("hide");
 					$(".content").removeClass("hide");
 				});
 				$("#back").on('click touch',function(e){
