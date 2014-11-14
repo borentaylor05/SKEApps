@@ -69,37 +69,37 @@
 						</a>
 					</div>
 					<div class="col-xs-1 col-centered sec-icons">
-						<a href="#">
+						<a class="cat" id="2" href="#">
 							<i class="fa fa-plus-circle fa-5x prog"></i>
 							<p>PointsPlus</p>
 						</a>
 					</div>
 					<div class="col-xs-1 col-centered sec-icons">
-						<a href="#">
+						<a class="cat" id="3" href="#">
 							<i class="fa fa-shopping-cart fa-5x prog"></i>
 							<p>Management/ Nutrition</p>
 						</a>
 					</div>
 					<div class="col-xs-1 col-centered sec-icons">
-						<a href="#">
+						<a class="cat" id="4" href="#">
 							<i class="fa fa-heart-o fa-5x prog"></i>
 							<p>Diet/Medical Needs</p>
 						</a>
 					</div>
 					<div class="col-xs-1 col-centered sec-icons">
-						<a href="#">
+						<a class="cat" id="5" href="#">
 							<i class="fa fa-wrench fa-5x prog"></i>
 							<p>eTools</p>
 						</a>
 					</div>
 					<div class="col-xs-1 col-centered sec-icons">
-						<a href="#">
+						<a class="cat" id="6" href="#">
 							<i class="fa fa-mobile fa-5x prog"></i>
 							<p>Mobile App</p>
 						</a>
 					</div>
 					<div class="col-xs-1 col-centered sec-icons">
-						<a href="#">
+						<a class="cat" id="7" href="#">
 							<i class="fa fa-users fa-5x prog"></i>
 							<p>Online Membership</p>
 						</a>
@@ -153,8 +153,6 @@
 			</div>
 		</div>
 	</div>
-
--->
 	<div class="content hide program-content">
 		<div class="center">
 			<i class="fa fa-5x"></i>
@@ -185,7 +183,7 @@
 	});
 	var environment = {
 		local: "http://localhost:3000",
-		remote_server: "https://safe-brushlands-8409.herokuapp.com"
+		remote: "https://safe-brushlands-8409.herokuapp.com"
 	}
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
@@ -222,7 +220,7 @@
 				$("div.program-content div.center i.fa").addClass(icon);
 				$("div.program-content div.center h1").text(header);
 				var rand = Math.floor(Math.random() * 1000000);
-				gadget_helper.get(environment.remote_server+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
+				gadget_helper.get(environment.remote+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
 					console.log(data)
 					data = JSON.parse(data.data);
 					wwc.list_docs(data, function(){

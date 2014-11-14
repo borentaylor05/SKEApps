@@ -59,6 +59,7 @@ var wwc = {
 		});
 	},
 	get_doc_from_link: function(url){
+		url = url.split("?")[0]; // strip any parameters
 		return url.substr(url.lastIndexOf('/') + 1);
 	},
 	get_current_doc: function(docs){

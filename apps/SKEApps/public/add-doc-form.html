@@ -2,7 +2,12 @@
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="stylesheets/clients/wwc/wwc-add-doc.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="stylesheets/main.css" type="text/css" media="screen" />
-
+<style type="text/css">
+	#success{
+		font-size: 1.4em;
+		margin-top: 50px;
+	}
+</style>
 <div class="container">
 	<div class="formContainer">
 		<form id="add-doc">
@@ -68,7 +73,7 @@
 <script type="text/javascript">
 	var environment = {
 		local: "http://localhost:3000",
-		remote_server: "https://safe-brushlands-8409.herokuapp.com"
+		remote: "https://safe-brushlands-8409.herokuapp.com"
 	}
 	var new_doc = {
 		name: "",
@@ -94,13 +99,13 @@
 			e.preventDefault();
 			$("#native-no span").removeClass("fa-check");
 			$(this).prepend("<span class='fa fa-check'></span>");
-			new_doc.native = true;
+			new_doc.native = "true";
 		});
 		$("#native-no").on("click touch", function(e){
 			e.preventDefault();
 			$("#native-yes span").removeClass("fa-check");
 			$(this).prepend("<span class='fa fa-check'></span>");
-			new_doc.native = false;
+			new_doc.native = "false";
 		});
 		$("#submit").on("click touch", function(e){
 			e.preventDefault();
@@ -109,13 +114,19 @@
 			new_doc.summary = $("#summary").val();
 			new_doc.original_doc = $("#original").val();
 			console.log(new_doc);
-			gadget_helper.post(environment.remote_server+"/apps/wwc/content/new.json", new_doc, function(data){
+			gadget_helper.post(environment.remote+"/apps/wwc/content/new.json", new_doc, function(data){
 				console.log(data);
 				data = JSON.parse(data.text);
 				if(data.status === "1"){
 					$(".formContainer").addClass("hide");
-					$("#success").removeClass("hide").text(data.message);
+					$("#success").removeClass("hide").prepend("<p>"+data.message+"</p><a href='#'>Click here to upload another doc.</a>");
 					setTimeout(gadgets.window.adjustHeight(), 1000);
+					$("#success a").on("click touch", function(e){
+						e.preventDefault();
+						$(".formContainer").removeClass("hide");
+						$("#success").addClass("hide").text("");
+						$("#name, #link, #original, #summary").val("");
+					});
 				}
 				else{
 					$("#error").removeClass("hide").text(data.message);

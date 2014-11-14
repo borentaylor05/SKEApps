@@ -247,8 +247,12 @@ ul{
 .cat > div:hover{
 	background-color: #999;
 }
-ul.program > li > a > div > i.fa, div.program-content > div > i{
+ul.program > li > a > div > i.fa{
 	color: rgba(0,151,136,1);
+}
+div.program-content > div > i{
+	color: rgba(0,151,136,1);
+	margin-right: 55px;
 }
 ul.product > li > a > div > i.fa{
 	color: #b5e140;

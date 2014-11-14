@@ -19,8 +19,8 @@
     "jiveUrl": "http://localhost:8080",
     "version": "post-samurai",
     "tenantId": "a30f8635-f541-4445-aebb-035c1c1ccea8-dev",
-    "clientId": "6j1h65c1svvw14u0gbms44tixvbnptk3.i",
-    "clientSecret": "iv07x511n64rhbjvfrrgmv6th608chuf.s",
+    "clientId": "mgsp04u4hxlxx6q7h43177s06w42o39k.i",
+    "clientSecret": "h5urq0x9bwje2vvpuq173y4s6qf6iegd.s",
     "jiveCommunity": "localhost:8080"
   }
 }
