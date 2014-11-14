@@ -220,7 +220,7 @@
 				$("div.program-content div.center").prepend('<i id="h-icon" class="fa '+icon+' fa-5x"></i>');
 				$("div.program-content div.center h1").text(header);
 				var rand = Math.floor(Math.random() * 1000000);
-				gadget_helper.get(environment.local+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
+				gadget_helper.get(environment.remote+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&rand="+rand.toString(), {}, function(data){
 					console.log(data)
 					data = JSON.parse(data.data);
 					wwc.list_docs(data, function(){
