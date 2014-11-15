@@ -80,8 +80,6 @@ var wwc = {
 				$(".doc-container").html(data.list[0].content.text);
 				$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="'+curDoc.original+'">Click here to see original document.</a></span></h1>');
 				$(".doc-container").append("</br>");
-				if($(".overlay").hasClass("hide"))
-					$(".overlay").removeClass("hide");
 				wwc.nav_fix();
 				wwc.link_fix();
 				gadgets.window.adjustHeight();
