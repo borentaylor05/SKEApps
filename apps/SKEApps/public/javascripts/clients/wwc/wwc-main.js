@@ -51,11 +51,13 @@ var wwc = {
 		return docs;
 	},
 	view_doc: function(link){
+		$(".spinner").removeClass("hide");
 		var docs = this.get_all_docs(link);
 		var curDoc = this.get_current_doc(docs);
 		this.get_doc_html(link.attr("id"), curDoc, function(){
 			buildNav(docs);
 			gadgets.window.adjustHeight();
+			$(".spinner").addClass("hide");
 		});
 	},
 	get_doc_from_link: function(url){
