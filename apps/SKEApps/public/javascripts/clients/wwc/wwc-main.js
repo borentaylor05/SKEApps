@@ -81,7 +81,7 @@ var wwc = {
 				$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="'+curDoc.original+'">Click here to see original document.</a></span></h1>');
 				$(".doc-container").append("</br>");
 				wwc.nav_fix();
-				wwc.link_fix();
+			//	wwc.link_fix();
 				gadgets.window.adjustHeight();
 			}
 			callback();
