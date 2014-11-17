@@ -41,7 +41,7 @@
         />
 
         <action id="com.wwc.kb-us-dev" 
-            path="jive/tabs/places/group?filter=equals(context.ID,1011)"
+            path="jive/actions/places/group?filter=equals(context.ID,1011)"
             label="KB Dev" 
             view="wwc-kb-dev"
         />
