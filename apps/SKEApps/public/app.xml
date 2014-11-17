@@ -23,6 +23,12 @@
             label="Knowledge Base" 
             view="wwc-knowledge-base"
         />
+        
+         <action id="com.wwc.dev-kb-us" 
+            path="jive/actions/places/group?filter=equals(context.ID,1011)"
+            label="KB Dev" 
+            view="wwc-kb-dev"
+        />
 
       -->
 			<![CDATA[ 
@@ -34,16 +40,11 @@
             view="add-doc-form"
         />
 
+
         <action id="com.wwc.kb-us" 
             path="jive/tabs/places/group?filter=equals(context.ID,1011)" 
             label="Knowledge Base" 
             view="wwc-kb"
-        />
-
-        <action id="com.wwc.kb-us-dev" 
-            path="jive/actions/places/group?filter=equals(context.ID,1011)"
-            label="KB Dev" 
-            view="wwc-kb-dev"
         />
        
 
