@@ -35,9 +35,15 @@
         />
 
         <action id="com.wwc.kb-us" 
-            path="jive/tabs/places/group" 
+            path="jive/tabs/places/group?equals(context.ID,1011)" 
             label="Knowledge Base" 
             view="wwc-kb"
+        />
+
+        <action id="com.wwc.kb-us-dev" 
+            path="jive/tabs/places/group" 
+            label="KB Dev" 
+            view="wwc-kb-dev"
         />
        
 
@@ -104,6 +110,7 @@
   <Content type="html" view="call-data" href="call-data.html" />
   <Content type="html" view="add-doc-form" href="add-doc-form.html" />
   <Content type="html" view="wwc-kb" href="wwc-kb.html" />
+  <Content type="html" view="wwc-kb-dev" href="wwc-kb-dev.html" />
   <!--
   <Content type="html" view="home" href="home.html" preferred_height="400" />
   <Content type="html" view="canvas" href="canvas.html" />
