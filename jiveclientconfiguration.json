@@ -1,5 +1,4 @@
 {
-    "clientUrl": "http://localhost",
-    "port":"8090",
+    "clientUrl": "https://safe-brushlands-8409.herokuapp.com",
     "development" : true
 }
