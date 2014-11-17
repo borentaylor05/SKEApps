@@ -20,7 +20,7 @@
       <!-- 
         
          <action id="com.wwc.dev-kb-us" 
-            path="jive/actions/places/group?filter=equals(context.ID,1011)"
+            path="jive/tabs/places/group"
             label="KB Dev" 
             view="wwc-kb-dev"
         />
