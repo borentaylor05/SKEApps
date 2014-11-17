@@ -34,15 +34,15 @@
 			<![CDATA[ 
 				
 
-        <action id="com.wwc.new-kb-doc" 
+        <action id="com.wwc.add-to-doc" 
             path="jive/actions/content/document" 
             label="Add Doc to KB" 
             view="add-doc-form"
         />
 
 
-        <action id="com.wwc.kb-us" 
-            path="jive/tabs/places/group?filter=equals(context.ID,1011)" 
+        <action id="com.wwc.kb" 
+            path="jive/tabs/places/group" 
             label="Knowledge Base" 
             view="wwc-kb"
         />
