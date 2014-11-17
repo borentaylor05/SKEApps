@@ -107,7 +107,7 @@ var wwc = {
 	nav_fix: function(){
 		$(".jive-link-anchor-small").each(function(){
 			$(this).on("click touch",function(e){
-				$(".navigation").css("top", "65px");
+				$(".navigation").css("top", "35px");
 			});
 		});
 	},
