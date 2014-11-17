@@ -34,19 +34,7 @@
 			<![CDATA[ 
 				
 
-        <action id="com.wwc.add-to-doc" 
-            path="jive/actions/content/document" 
-            label="Add Doc to KB" 
-            view="add-doc-form"
-        />
-
-
-        <action id="com.wwc.kb" 
-            path="jive/tabs/places/group" 
-            label="Knowledge Base" 
-            view="wwc-kb"
-        />
-       
+        
 
 			]]>  
 		</Param>  
