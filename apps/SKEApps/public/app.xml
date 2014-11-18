@@ -35,7 +35,7 @@
         />
 
         <action id="com.wwc.add-to-doc" 
-            path="jive/actions/content/document" 
+            path="jive/actions/places/space?filter=equals(user.ID,2019)" 
             label="Add Doc to KB" 
             view="add-doc-form"
         />
