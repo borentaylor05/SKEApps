@@ -273,7 +273,7 @@ ul.program > li > a > div > i.fa{
 	color: rgba(0,151,136,1);
 }
 div.program-content > div > i{
-	color: rgba(0,151,136,1);
+	/*color: rgba(0,151,136,1);*/
 	margin-right: 55px;
 }
 ul.product > li > a > div > i.fa{

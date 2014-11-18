@@ -143,6 +143,14 @@ var wwc = {
 			e.preventDefault();
 			alert(data[$(div).val()]);
 		});
+	},
+	get_icon_color: function(cat){
+		var classes = cat.attr("class").split(" ");
+		var type = classes[classes.length - 1];
+		$(".content").find("i").each(function(){
+			console.log($(this));
+			$(this).addClass(type);
+		});
 	}
 }
 

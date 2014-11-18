@@ -210,6 +210,7 @@
 		});
 		$(".cat").each(function(){
 			$(this).on("click touch", function(e){
+				var cur = $(this);
 				$(".prime-container, #secondary-container").addClass("hide");
 				$(".overlay, .spinner").removeClass("hide");
 				$(".content-container").empty();
@@ -224,6 +225,7 @@
 					console.log(data)
 					data = JSON.parse(data.data);
 					wwc.list_docs(data, function(){
+						wwc.get_icon_color(cur);
 						$(".overlay").addClass("hide");
 						$("#back").removeClass("hide");
 						$("a.sub-header").each(function(){
