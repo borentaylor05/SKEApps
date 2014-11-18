@@ -42,7 +42,7 @@
 
 
         <action id="com.wwc.kb" 
-            path="jive/tabs/places/group" 
+            path="jive/tabs/places/space?filter=equals(context.ID,2005)" 
             label="Knowledge Base" 
             view="wwc-kb"
         />
