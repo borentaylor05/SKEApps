@@ -74,15 +74,14 @@ var wwc = {
 		osapi.jive.corev3.contents.get({
 		     entityDescriptor: "102,"+doc.substring(4)
 		 }).execute(function(data){
-		 	var error = "<h4 class='access-error'>"+
+		 	if(data.status === 403){
+		 		var error = "<h4 class='access-error'>"+
 						"Oops it looks like you don't have permission to view this document..."+
 						"<p>"+
 							"If you believe this is a mistake, please reach out to your community specialist, "+
 							"<a class='jiveTT-hover-user jive-link-profile-small' data-containerid='-1' data-containertype='-1' data-objectid='2019' data-objecttype='3' href='https://weightwatchers.jiveon.com/people/ericareyes%40teletech.com' aria-describedby='jive-note-user-body'>Erica Degourville-Reyes</a>"+
 						"</p>"+
 					"</h4>";
-		 	console.log(data.status+", "+typeof data.status);
-		 	if(data.status === 403){
 		 		$(".spinner").addClass("hide");
 		 		$(".doc-container").append(error);
 		 		return;
@@ -126,10 +125,13 @@ var wwc = {
 	},
 	link_fix: function(){
 		$(".jive-link-wiki-small").each(function(){
-			var doc = wwc.get_doc_from_link($(this).attr("id"));
-			var id = "#"+doc.split("#")[1];
-			console.log(id);
-			$(this).attr("id", id);
+			$(this).click(function(e){
+				e.preventDefault();
+				var doc = wwc.get_doc_from_link($(this).attr("href"));
+				var id = "#"+doc.split("#")[1];
+				console.log(id);
+				window.location.href = id;
+			});
 		});
 	},
 	search: function(form, div, data){
