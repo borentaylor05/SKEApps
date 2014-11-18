@@ -71,11 +71,21 @@ var wwc = {
 		}
 	},
 	get_doc_html: function(doc, curDoc, callback){
-
 		osapi.jive.corev3.contents.get({
 		     entityDescriptor: "102,"+doc.substring(4)
 		 }).execute(function(data){
+		 	var error = "<h4 class='access-error'>"+
+						"Oops it looks like you don't have permission to view this document..."+
+						"<p>"+
+							"If you believe this is a mistake, please reach out to your community specialist, "+
+							"<a href='javascript:;' class='jive-link-profile-small jive_macro jive_macro_user active_link' jiveid='2019' data-id='2019' data-type='person' data-objecttype='3' jivemacro='user' ___default_attr='2019' data-orig-content='Erica Degourville-Reyes'>Erica Degourville-Reyes</a>"+
+						"</p>"+
+					"</h4>";
 		 	console.log(data);
+		 	if(data.status === "403"){
+		 		$(".doc-container").append(error);
+		 		return;
+		 	}
 			if(data.hasOwnProperty('list') && data.list.length > 0){
 				$(".doc-container").html(data.list[0].content.text);
 				$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="'+curDoc.original+'">Click here to see original document.</a></span></h1>');

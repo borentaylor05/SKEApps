@@ -1,3 +1,11 @@
+.access-error{
+	margin-top: 40px;
+	color: red;
+	font-weight: 200;
+}
+.access-error > p{
+	color: black;
+}
 label{
 	color: #333;
 	font-weight: bolder;
