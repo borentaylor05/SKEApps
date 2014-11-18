@@ -117,7 +117,7 @@ var wwc = {
 	nav_fix: function(){
 		$(".jive-link-anchor-small").each(function(){
 			$(this).on("click touch",function(e){
-				$(".navigation").css("top", "35px");
+				$(".navigation").css("top", "40px");
 			});
 		});
 		$(".jive-rendered-content").prepend("<span id='top'></span>");
@@ -127,7 +127,7 @@ var wwc = {
 		$(".jive-link-wiki-small").each(function(){
 			$(this).on("click touch",function(e){
 				e.preventDefault();
-				$(".navigation").css("top", "38px");
+				$(".navigation").css("top", "40px");
 				var doc = wwc.get_doc_from_link($(this).attr("href"));
 				var id = "#"+doc.split("#")[1];
 				console.log(id);
