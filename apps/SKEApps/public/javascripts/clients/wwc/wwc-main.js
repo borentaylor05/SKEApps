@@ -144,7 +144,7 @@ var wwc = {
 			alert(data[$(div).val()]);
 		});
 	},
-	get_icon_color: function(cat){
+	get_icon_color: function(cat){ // give sub menus parent color
 		var classes = cat.children().attr("class").split(" ");
 		var type = classes[classes.length - 1];
 		$(".content").find("i").each(function(){
