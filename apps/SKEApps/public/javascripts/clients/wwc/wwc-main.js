@@ -141,7 +141,12 @@ var wwc = {
 		typeahead.setup(div, searchData);
 		$(form).submit(function(e){
 			e.preventDefault();
-			alert(data[$(div).val()]);
+			var doc = data[$(div).val()];
+			$(".doc-container").empty();
+			$(".overlay").removeClass("hide");
+			wwc.get_doc_html(doc, null, function(){
+
+			});
 		});
 	},
 	get_icon_color: function(cat){ // give sub menus parent color
