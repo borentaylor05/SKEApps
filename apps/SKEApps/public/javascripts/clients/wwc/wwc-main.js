@@ -121,14 +121,16 @@ var wwc = {
 				$(".navigation").css("top", "35px");
 			});
 		});
+		$(".jive-rendered-content").prepend("<span id='top'></span>");
+		this.link_fix();
 	},
 	link_fix: function(){
 		$(".jive-link-wiki-small").each(function(){
-			$(this).on("click touch",function(e){
-				e.preventDefault();
-			    var top = document.getElementById("tothetop").offsetTop; //Getting Y of target element
-			    window.scrollTo(0, top);                        //Go there.
-			});
+			e.preventDefault();
+			var doc = wwc.get_doc_from_link($(this).attr("id"));
+			var id = "#"+doc.split("#")[1];
+			console.log(id);
+			$(this).attr("id", id);
 		});
 	},
 	search: function(form, div, data){
