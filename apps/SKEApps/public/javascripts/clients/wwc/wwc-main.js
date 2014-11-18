@@ -78,11 +78,12 @@ var wwc = {
 						"Oops it looks like you don't have permission to view this document..."+
 						"<p>"+
 							"If you believe this is a mistake, please reach out to your community specialist, "+
-							"<a href='javascript:;' class='jive-link-profile-small jive_macro jive_macro_user active_link' jiveid='2019' data-id='2019' data-type='person' data-objecttype='3' jivemacro='user' ___default_attr='2019' data-orig-content='Erica Degourville-Reyes'>Erica Degourville-Reyes</a>"+
+							"<a class='jiveTT-hover-user jive-link-profile-small' data-containerid='-1' data-containertype='-1' data-objectid='2019' data-objecttype='3' href='https://weightwatchers.jiveon.com/people/ericareyes%40teletech.com' aria-describedby='jive-note-user-body'>Erica Degourville-Reyes</a>"+
 						"</p>"+
 					"</h4>";
 		 	console.log(data.status+", "+typeof data.status);
 		 	if(data.status === 403){
+		 		$(".spinner").addClass("hide");
 		 		$(".doc-container").append(error);
 		 		return;
 		 	}
