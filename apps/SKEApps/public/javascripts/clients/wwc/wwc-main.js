@@ -126,7 +126,6 @@ var wwc = {
 	},
 	link_fix: function(){
 		$(".jive-link-wiki-small").each(function(){
-			e.preventDefault();
 			var doc = wwc.get_doc_from_link($(this).attr("id"));
 			var id = "#"+doc.split("#")[1];
 			console.log(id);
