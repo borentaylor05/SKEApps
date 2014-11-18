@@ -81,7 +81,7 @@ var wwc = {
 							"<a href='javascript:;' class='jive-link-profile-small jive_macro jive_macro_user active_link' jiveid='2019' data-id='2019' data-type='person' data-objecttype='3' jivemacro='user' ___default_attr='2019' data-orig-content='Erica Degourville-Reyes'>Erica Degourville-Reyes</a>"+
 						"</p>"+
 					"</h4>";
-		 	console.log(data);
+		 	console.log(data.status+", "+typeof data.status);
 		 	if(data.status === "403"){
 		 		$(".doc-container").append(error);
 		 		return;
