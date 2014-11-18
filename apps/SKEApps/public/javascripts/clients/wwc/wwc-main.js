@@ -25,7 +25,7 @@ var wwc = {
 				items += "<li><h3><a rel="+rel+" target="+target+" href='"+href+"' id='"+id+"' class='"+classes+"'>"+data[i].docs[x].name+"</a></h3><p class='summary'>"+data[i].docs[x].summary+"</p></li>";
 			}
 			var list = "<ul class='subtopics left'>"+items+"</ul>";
-			$(".content-container").append("<h2 class='cat-header left'><i class='fa fa-folder-open fa-2x prog'></i>&nbsp"+data[i].name+"</h2>");
+			$(".content-container").append("<h2 class='cat-header left'><i class='fa fa-folder-open fa-2x'></i>&nbsp"+data[i].name+"</h2>");
 			$(".content-container").append(list);
 		}
 		callback();
@@ -145,7 +145,7 @@ var wwc = {
 		});
 	},
 	get_icon_color: function(cat){
-		var classes = cat.attr("class").split(" ");
+		var classes = cat.children().attr("class").split(" ");
 		var type = classes[classes.length - 1];
 		$(".content").find("i").each(function(){
 			console.log($(this));
