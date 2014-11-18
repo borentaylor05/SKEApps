@@ -1,5 +1,6 @@
 var typeahead = {
     setup: function(div, data){
+      console.log(div);
         var substringMatcher = function(strs) {
           return function findMatches(q, cb) {
             var matches, substrRegex;

@@ -2,6 +2,7 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="stylesheets/bootstrap.min.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="stylesheets/clients/wwc/wwc.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="stylesheets/ttbs3.css" type="text/css" media="screen" />
 
 <div class="cust-container center tab-content">
 	<ul class="nav nav-tabs" role="tablist" id="myTab">
@@ -167,7 +168,15 @@
 			</div>
 		</div>
 	</div>
-<div role="tabpanel" class="tab-pane" id="search">...</div>
+<div role="tabpanel" class="tab-pane" id="search">
+	<div class="formContainer">
+		<form id="search">
+			<label>Begin Typing Document Name</label>
+			<input id="searchDoc" class="form-control" type="text" placeholder="e.g. Pocket Guide">
+			<input type="submit" class="btn btn-md btn-primary" value="Search">
+		</form>
+	</div>
+</div>
 </div>
 	
 	<div class="overlay hide">
@@ -181,6 +190,8 @@
 <script type="text/javascript" src="javascripts/jquery.min.js"></script>
 <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="javascripts/gadget-helper.js"></script>
+<script type="text/javascript" src="javascripts/typeahead.bundle.min.js"></script>
+<script type="text/javascript" src="javascripts/myTypeahead.js"></script>
 <script type="text/javascript" src="javascripts/clients/wwc/wwc-main.js"></script>
 
 <script type="text/javascript">
@@ -197,6 +208,10 @@
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
+		gadget_helper.get(environment.remote+"/apps/wwc/contents", {}, function(data){
+			console.log(data);
+			wwc.search("#search", "#searchDoc", data);
+		})
 		$(".primary").each(function(){
 			$(this).on("click touch",function(e){
 				e.preventDefault();

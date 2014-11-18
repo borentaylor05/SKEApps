@@ -75,7 +75,7 @@ var wwc = {
 		osapi.jive.corev3.contents.get({
 		     entityDescriptor: "102,"+doc.substring(4)
 		 }).execute(function(data){
-		 //	console.log(data);
+		 	console.log(data);
 			if(data.hasOwnProperty('list') && data.list.length > 0){
 				$(".doc-container").html(data.list[0].content.text);
 				$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="'+curDoc.original+'">Click here to see original document.</a></span></h1>');
@@ -118,6 +118,15 @@ var wwc = {
 			    var top = document.getElementById("tothetop").offsetTop; //Getting Y of target element
 			    window.scrollTo(0, top);                        //Go there.
 			});
+		});
+	},
+	search: function(form, div, data){
+		data = JSON.parse(data.text);
+		var searchData = Object.keys(data);
+		typeahead.setup(div, searchData);
+		$(form).submit(function(e){
+			e.preventDefault();
+			alert(data[$(div).val()]);
 		});
 	}
 }

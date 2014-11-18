@@ -1,4 +1,16 @@
-
+label{
+	color: #333;
+	font-weight: bolder;
+}
+.formContainer{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 500px;
+}
+.formContainer > form > input.btn{
+	margin-top: 20px;
+}
 .outer{
 	border-radius: 6px;
 	padding: 9px;
