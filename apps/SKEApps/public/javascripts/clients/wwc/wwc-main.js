@@ -82,7 +82,7 @@ var wwc = {
 						"</p>"+
 					"</h4>";
 		 	console.log(data.status+", "+typeof data.status);
-		 	if(data.status === "403"){
+		 	if(data.status === 403){
 		 		$(".doc-container").append(error);
 		 		return;
 		 	}
