@@ -201,7 +201,7 @@ ul{
 	list-style: none;
 }
 .subtopics > li > h3 > a.link-header{
-	color: rgba(0,151,136,1);
+	color: rgba(93,93,93,1);
 	font-weight: 400;
 
 }
