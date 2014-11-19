@@ -150,6 +150,8 @@ var wwc = {
 				console.log(doc_json.num);
 				wwc.get_doc_html(doc, doc_json, function(){
 					wwc.nav_fix();
+					$(".navigation").append('<i id="close" class="fa fa-close fa-3x"></i>');
+					$(".navigation").append("<h3>"+doc_json.header+"<span id='tothetop'></span></h3>");
 					$(".spinner").addClass("hide");
 					gadgets.window.adjustHeight();
 				});
@@ -170,8 +172,8 @@ var wwc = {
 			var orig = doc.original_doc;
 		var doc = {
 			num: doc.doc_num,
-			title: "Path: "+doc.parent,
-			header: doc.name,
+			title: doc.name,
+			header: "Path"+doc.parent,
 			original: orig,
 			index: 0
 		};
