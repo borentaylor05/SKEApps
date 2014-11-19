@@ -1,3 +1,6 @@
+.nav-tabs>li{
+	min-width: 200px;
+}
 .access-error{
 	margin-top: 40px;
 	color: red;

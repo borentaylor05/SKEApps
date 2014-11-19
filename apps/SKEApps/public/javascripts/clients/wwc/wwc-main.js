@@ -147,7 +147,7 @@ var wwc = {
 			gadget_helper.get(environment.remote+"/contents/docs?doc="+doc, {}, function(data){
 				data = JSON.parse(data.text);
 				var doc = wwc.rails_to_json(data);
-				wwc.get_doc_html(doc.doc_num, doc, function(){
+				wwc.get_doc_html(doc.num, doc, function(){
 					wwc.nav_fix();
 					$(".spinner").addClass("hide");
 					gadgets.window.adjustHeight();
