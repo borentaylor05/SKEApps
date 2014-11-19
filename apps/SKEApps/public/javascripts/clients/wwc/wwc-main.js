@@ -83,8 +83,8 @@ var wwc = {
 						"</p>"+
 					"</h4>";
 		 		$(".spinner").addClass("hide");
-		 		$(".navigation").removeClass("hide");
-
+		 		$(".navigation").append('<i id="close" class="fa fa-close fa-3x"></i><h2>Unauthorized</h2>');
+		 		wwc.close_doc();
 		 		$(".doc-container").append(error);
 		 		return;
 		 	}
