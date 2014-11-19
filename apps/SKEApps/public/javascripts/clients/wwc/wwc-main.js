@@ -150,8 +150,10 @@ var wwc = {
 				console.log(doc_json.num);
 				wwc.get_doc_html(doc, doc_json, function(){
 					wwc.nav_fix();
+					wwc.close_doc();
 					$(".navigation").append('<i id="close" class="fa fa-close fa-3x"></i>');
 					$(".navigation").append("<h5 class='search-header'>"+doc_json.header+"<span id='tothetop'></span></h5>");
+					$(".navigation").append("<div class='center'><button class='btn btn-sm btn-primary>Add to Favorites</button></div>'")
 					$(".spinner").addClass("hide");
 					gadgets.window.adjustHeight();
 				});
