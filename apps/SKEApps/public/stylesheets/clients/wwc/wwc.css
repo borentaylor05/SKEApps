@@ -1,5 +1,5 @@
 .nav-tabs>li{
-	min-width: 200px;
+	min-width: 200px !important;
 }
 .access-error{
 	margin-top: 40px;

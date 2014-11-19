@@ -146,8 +146,9 @@ var wwc = {
 			$(".overlay, .navigation").removeClass("hide");
 			gadget_helper.get(environment.remote+"/contents/docs?doc="+doc, {}, function(data){
 				data = JSON.parse(data.text);
-				var doc = wwc.rails_to_json(data);
-				wwc.get_doc_html(doc.num, doc, function(){
+				var doc_json = wwc.rails_to_json(data);
+				console.log(doc_json.num);
+				wwc.get_doc_html(doc, doc_json, function(){
 					wwc.nav_fix();
 					$(".spinner").addClass("hide");
 					gadgets.window.adjustHeight();
