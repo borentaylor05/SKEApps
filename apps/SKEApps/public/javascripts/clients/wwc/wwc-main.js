@@ -143,9 +143,11 @@ var wwc = {
 			e.preventDefault();
 			var doc = data[$(div).val()];
 			$(".doc-container").empty();
-			$(".overlay").removeClass("hide");
+			$(".overlay, .navigation").removeClass("hide");
 			wwc.get_doc_html(doc, null, function(){
-
+				wwc.nav_fix();
+				$(".spinner").addClass("hide");
+				gadgets.window.adjustHeight();
 			});
 		});
 	},
