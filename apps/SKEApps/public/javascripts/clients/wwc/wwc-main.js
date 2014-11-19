@@ -140,12 +140,11 @@ var wwc = {
 		var searchData = Object.keys(data);
 		typeahead.setup(div, searchData);
 		$(form).submit(function(e){
-			var host = document.URL;
 			e.preventDefault();
 			var doc = data[$(div).val()];
 			$(".doc-container").empty();
 			$(".overlay, .navigation").removeClass("hide");
-			gadget_helper.get(environment.remote+"/contents/docs?doc="+host+doc, {}, function(data){
+			gadget_helper.get(environment.remote+"/contents/docs?doc="+doc, {}, function(data){
 				console.log(data);
 				wwc.get_doc_html(doc, null, function(){
 					wwc.nav_fix();
@@ -192,6 +191,7 @@ function buildNav(docs){
 	$(".navigation").append("<h3>"+curDoc.header+"<span id='tothetop'></span></h3>");
 	$("#prev").on("click touch", function(e){
 		e.preventDefault();
+		$(".spinner").removeClass("hide");
 		$(".navigation, .doc-container").empty();
 		curDoc.current = false;
 		docs[curDoc.index - 1].current = true;
@@ -201,6 +201,7 @@ function buildNav(docs){
 	});
 	$("#next").on("click touch", function(e){
 		e.preventDefault();
+		$(".spinner").removeClass("hide");
 		$(".navigation, .doc-container").empty();
 		curDoc.current = false;
 		docs[curDoc.index + 1].current = true;
