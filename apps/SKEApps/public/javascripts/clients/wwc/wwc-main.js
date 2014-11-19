@@ -151,7 +151,7 @@ var wwc = {
 				wwc.get_doc_html(doc, doc_json, function(){
 					wwc.nav_fix();
 					$(".navigation").append('<i id="close" class="fa fa-close fa-3x"></i>');
-					$(".navigation").append("<h3>"+doc_json.header+"<span id='tothetop'></span></h3>");
+					$(".navigation").append("<h5 class='search-header'>"+doc_json.header+"<span id='tothetop'></span></h5>");
 					$(".spinner").addClass("hide");
 					gadgets.window.adjustHeight();
 				});
@@ -173,7 +173,7 @@ var wwc = {
 		var doc = {
 			num: doc.doc_num,
 			title: doc.name,
-			header: "Path"+doc.parent,
+			header: "Path: "+doc.parent,
 			original: orig,
 			index: 0
 		};
