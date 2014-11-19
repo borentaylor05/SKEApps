@@ -148,7 +148,7 @@ var wwc = {
 				console.log(data);
 				wwc.get_doc_html(doc, null, function(){
 					wwc.nav_fix();
-					$(".spinner").css("margin-top", "100px").addClass("hide");
+					$(".spinner").addClass("hide");
 					gadgets.window.adjustHeight();
 				});
 			});
