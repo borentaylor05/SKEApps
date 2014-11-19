@@ -146,8 +146,8 @@ var wwc = {
 			$(".overlay, .navigation").removeClass("hide");
 			gadget_helper.get(environment.remote+"/contents/docs?doc="+doc, {}, function(data){
 				data = JSON.parse(data.text);
-				var doc = wwc.rails_to_json();
-				wwc.get_doc_html(doc, null, function(){
+				var doc = wwc.rails_to_json(data);
+				wwc.get_doc_html(doc, doc, function(){
 					wwc.nav_fix();
 					$(".spinner").addClass("hide");
 					gadgets.window.adjustHeight();
@@ -169,7 +169,7 @@ var wwc = {
 			var orig = doc.original_doc;
 		var doc = {
 			num: doc.doc_num,
-			title: "",
+			title: "Path: "+doc.parent,
 			header: doc.name,
 			original: orig,
 			index: 0
