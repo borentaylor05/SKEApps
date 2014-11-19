@@ -84,7 +84,7 @@ var wwc = {
 					"</h4>";
 		 		$(".spinner").addClass("hide");
 		 		$(".navigation").removeClass("hide");
-		 		
+
 		 		$(".doc-container").append(error);
 		 		return;
 		 	}
@@ -186,7 +186,7 @@ var wwc = {
 	add_to_favorites: function(doc_num){
 		var info = {
 			doc_num: doc_num,
-			user: window.parent._jive_current_user.ID;
+			user: window.parent._jive_current_user.ID
 		}
 		gadget_helper.post(environment.remote+"/wwc-add-to-favorites", info, function(data){
 			console.log(data);
