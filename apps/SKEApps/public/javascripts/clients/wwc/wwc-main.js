@@ -151,11 +151,10 @@ var wwc = {
 				wwc.get_doc_html(doc, doc_json, function(){
 					wwc.nav_fix();
 					$(".navigation").append('<i id="close" class="fa fa-close fa-3x"></i>');
-					wwc.close_doc();
 					$(".navigation").append("<h5 class='search-header'>"+doc_json.header+"<span id='tothetop'></span></h5>");
 					$(".navigation").append("<button id='favorite' data-doc="+doc+" class='btn btn-sm btn-primary pull-right'>Add to Favorites</button>");
-					
 					$(".spinner").addClass("hide");
+					wwc.close_doc();
 					gadgets.window.adjustHeight();
 				});
 			});
@@ -183,7 +182,13 @@ var wwc = {
 		return doc;
 	},
 	add_to_favorites: function(doc_num){
-
+		var info = {
+			doc_num: doc_num,
+			user: window.parent._jive_current_user.ID;
+		}
+		gadget_helper.post(environment.remote+"/wwc-add-to-favorites", info, function(data){
+			console.log(data);
+		});
 	}
 }
 
