@@ -153,7 +153,7 @@ var wwc = {
 					wwc.close_doc();
 					$(".navigation").append('<i id="close" class="fa fa-close fa-3x"></i>');
 					$(".navigation").append("<h5 class='search-header'>"+doc_json.header+"<span id='tothetop'></span></h5>");
-					$(".navigation").append("<button id='favorite' class='btn btn-sm btn-primary text-center'>Add to Favorites</button>");
+					$(".navigation").append("<button id='favorite' class='btn btn-sm btn-primary pull-right'>Add to Favorites</button>");
 					$(".spinner").addClass("hide");
 					gadgets.window.adjustHeight();
 				});
