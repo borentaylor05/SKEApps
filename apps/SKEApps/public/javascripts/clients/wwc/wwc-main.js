@@ -145,7 +145,8 @@ var wwc = {
 			$(".doc-container").empty();
 			$(".overlay, .navigation").removeClass("hide");
 			gadget_helper.get(environment.remote+"/contents/docs?doc="+doc, {}, function(data){
-				console.log(data);
+				data = JSON.parse(data.text);
+				var doc = wwc.rails_to_json();
 				wwc.get_doc_html(doc, null, function(){
 					wwc.nav_fix();
 					$(".spinner").addClass("hide");
@@ -160,6 +161,20 @@ var wwc = {
 		$(".content").find("i").each(function(){
 			$(this).addClass(type);
 		});
+	},
+	rails_to_json: function(doc){
+		if(!doc.original_doc.length > 1)
+			var orig = doc.link;
+		else
+			var orig = doc.original_doc;
+		var doc = {
+			num: doc.doc_num,
+			title: "",
+			header: doc.name,
+			original: orig,
+			index: 0
+		};
+		return doc;
 	}
 }
 
