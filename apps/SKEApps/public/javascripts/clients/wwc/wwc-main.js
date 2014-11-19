@@ -83,6 +83,8 @@ var wwc = {
 						"</p>"+
 					"</h4>";
 		 		$(".spinner").addClass("hide");
+		 		$(".navigation").removeClass("hide");
+		 		
 		 		$(".doc-container").append(error);
 		 		return;
 		 	}
