@@ -140,12 +140,11 @@ var wwc = {
 		var searchData = Object.keys(data);
 		typeahead.setup(div, searchData);
 		$(form).submit(function(e){
-			var host = document.URL;
 			e.preventDefault();
 			var doc = data[$(div).val()];
 			$(".doc-container").empty();
 			$(".overlay, .navigation").removeClass("hide");
-			gadget_helper.get(host+"contents/docs?doc="+doc, {}, function(data){
+			gadget_helper.get(environment.remote+"contents/docs?doc="+doc, {}, function(data){
 				console.log(data);
 				wwc.get_doc_html(doc, null, function(){
 					wwc.nav_fix();
