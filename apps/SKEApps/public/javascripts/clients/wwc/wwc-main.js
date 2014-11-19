@@ -140,14 +140,18 @@ var wwc = {
 		var searchData = Object.keys(data);
 		typeahead.setup(div, searchData);
 		$(form).submit(function(e){
+			var host = document.URL;
 			e.preventDefault();
 			var doc = data[$(div).val()];
 			$(".doc-container").empty();
 			$(".overlay, .navigation").removeClass("hide");
-			wwc.get_doc_html(doc, null, function(){
-				wwc.nav_fix();
-				$(".spinner").addClass("hide");
-				gadgets.window.adjustHeight();
+			gadget_helper.get(host+"contents/docs?doc="+doc, {}, function(data){
+				console.log(data);
+				wwc.get_doc_html(doc, null, function(){
+					wwc.nav_fix();
+					$(".spinner").addClass("hide");
+					gadgets.window.adjustHeight();
+				});
 			});
 		});
 	},
