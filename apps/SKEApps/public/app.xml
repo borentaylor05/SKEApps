@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module specificationVersion="1">
-  <ModulePrefs title="WW USA"
-               description="WW USA"
+  <ModulePrefs title="WW Coaches"
+               description="WW Coaches"
                author="Taylor Boren"
                author_affiliation="TeleTech"
                author_email="taylorboren@teletech.com">
@@ -40,22 +40,6 @@
             view="add-doc-form"
         />
 
-
-        <action id="com.wwc.kb" 
-            path="jive/tabs/places/space?filter=equals(context.ID,2006)" 
-            label="Knowledge Base" 
-            view="wwc-kb"
-        />
-        <action id="com.wwc.kb" 
-            path="jive/tabs/places/space?filter=equals(context.ID,2007)" 
-            label="Knowledge Base" 
-            view="wwc-kb"
-        />
-        <action id="com.wwc.kb" 
-            path="jive/tabs/places/space?filter=equals(context.ID,2008)" 
-            label="Knowledge Base" 
-            view="wwc-kb"
-        />
         <action id="com.wwc.kb" 
             path="jive/tabs/places/space?filter=equals(context.ID,2005)" 
             label="Knowledge Base" 
