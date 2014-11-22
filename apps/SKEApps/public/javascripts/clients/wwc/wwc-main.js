@@ -4,7 +4,7 @@ var wwc = {
 		osapi.http.get({
 		     "href": "https://weightwatchers.jiveon.com/api/core/v3/people/"+window.parent._jive_current_user.ID.toString()
 		 }).execute(function(data){
-		 	console.log(data);
+		 	console.log("ASDASDSADASDSADASDASD"+data);
 		 });
 	},
 	list_docs: function(data, callback){
