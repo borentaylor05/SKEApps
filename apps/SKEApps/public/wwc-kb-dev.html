@@ -200,6 +200,7 @@
 			return type === 'json' ? jQuery.trim(data.replace(/^throw [^;]*;/, '')) : data;
 		}
 	});
+	var current_user = window.parent._jive_current_user.ID;
 	var globalIcon = "";
 	var environment = {
 		local: "http://localhost:3000",
@@ -244,7 +245,7 @@
 				$("div.program-content div.center").prepend('<i id="h-icon" class="fa '+icon+' fa-5x"></i>');
 				$("div.program-content div.center h1").text(header);
 				var rand = Math.floor(Math.random() * 1000000);
-				gadget_helper.get(environment.remote+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&jive_user_id="+window.parent._jive_current_user.ID.toString()+"&rand="+rand.toString(), {}, function(data){
+				gadget_helper.get(environment.remote+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&jive_user_id="+current_user.toString()+"&rand="+rand.toString(), {}, function(data){
 					data = JSON.parse(data.data);
 					wwc.list_docs(data, function(){
 						$(".overlay").addClass("hide");
@@ -271,7 +272,7 @@
 		});
 
 		osapi.jive.corev3.people.get({
-		     id: window.parent._jive_current_user.ID.toString()
+		     id: current_user.toString()
 		 }).execute(function(data){
 		 	console.log(data);
 		});
