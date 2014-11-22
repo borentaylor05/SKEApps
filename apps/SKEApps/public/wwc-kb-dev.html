@@ -270,12 +270,11 @@
 				return false;
 			});
 		});
-
-		osapi.jive.corev3.people.get({
-		     id: current_user.toString()
-		 }).execute(function(data){
-		 	console.log(data);
+	
+		osapi.people.getViewer().execute(function(viewerData){
+			console.log(viewerData);
 		});
+
 
 	});
 
