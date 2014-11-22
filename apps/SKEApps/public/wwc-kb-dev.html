@@ -271,7 +271,9 @@
 		});
 	
 		osapi.people.getViewer().execute(function(viewerData){
-			console.log(viewerData);
+			osapi.jive.corev3.people.get({ "id": viewerData.id }).execute(function(data){
+				console.log(data);	
+			});
 		});
 
 
