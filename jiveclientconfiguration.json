@@ -1,5 +1,3 @@
 {
-    "clientUrl": "http://localhost",
-    "port":"8090",
-    "development": true
+    "clientUrl": "https://nameless-basin-7685.herokuapp.com",
 }
