@@ -205,16 +205,18 @@
 		local: "http://localhost:3000",
 		remote: "https://safe-brushlands-8409.herokuapp.com"
 	}
+	var current_user = "";
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
 		osapi.people.getViewer().execute(function(viewerData){
-			osapi.jive.corev3.people.get({ "id": viewerData.id }).execute(function(data){
+			current_user = viewerData.id
+			osapi.jive.corev3.people.get({ "id": current_user }).execute(function(data){
 				var user = {
-					jive_user_id: viewerData.id,
+					jive_user_id: current_user,
 					employee_id: data.jive.username
 				};
-				gadget_helper.post(environment.remote+"apps/wwc/new-user", user, function(d){
+				gadget_helper.post(environment.remote+"/apps/wwc/new-user", user, function(d){
 					console.log(d);
 				})	
 			});
@@ -254,7 +256,7 @@
 				$("div.program-content div.center").prepend('<i id="h-icon" class="fa '+icon+' fa-5x"></i>');
 				$("div.program-content div.center h1").text(header);
 				var rand = Math.floor(Math.random() * 1000000);
-				gadget_helper.get(environment.remote+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&jive_user_id=&rand="+rand.toString(), {}, function(data){
+				gadget_helper.get(environment.remote+"/apps/wwc/get-structure.json?secondary="+id.toString()+"&jive_user_id="+current_user.toString()+"&rand="+rand.toString(), {}, function(data){
 					data = JSON.parse(data.data);
 					wwc.list_docs(data, function(){
 						$(".overlay").addClass("hide");
