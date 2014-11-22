@@ -209,7 +209,8 @@
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
 		osapi.jive.corev3.people.get({
-		     id: window.parent._jive_current_user.ID.toString()
+			 "href": "/people/"+window.parent._jive_current_user.ID.toString(),
+		     "v": "v3" 
 		 }).execute(function(data){
 		 	var user = {
 		 		jive_user_id: data.id,

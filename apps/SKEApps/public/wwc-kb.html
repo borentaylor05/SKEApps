@@ -188,10 +188,16 @@
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
-		osapi.jive.corev3.people.get({
+		osapi.jive.core.get({
  		     id: window.parent._jive_current_user.ID.toString()
  		 }).execute(function(data){
- 		 	console.log(data);
+ 		 	var user = {
+ 		 		jive_user_id: data.id,
+ 		 		employee_id: data.jive.username
+ 		 	};
+ 		 	gadget_helper.post(environment.remote+"/apps/wwc/new-user", user, function(data){
+ 		 		console.log(data);
+ 		 	});
  		 });
 		$(".primary").each(function(){
 			$(this).on("click touch",function(e){
