@@ -208,7 +208,17 @@
 	gadgets.util.registerOnLoadHandler(function() {
 		gadgets.window.adjustHeight();
 		gadgets.window.adjustWidth();
-		
+		osapi.people.getViewer().execute(function(viewerData){
+			osapi.jive.corev3.people.get({ "id": viewerData.id }).execute(function(data){
+				var user = {
+					jive_user_id: viewerData.id,
+					employee_id: data.jive.username
+				};
+				gadget_helper.post(environment.remote+"apps/wwc/new-user", user, function(d){
+					console.log(d);
+				})	
+			});
+		});
 		gadget_helper.get(environment.remote+"/apps/wwc/contents", {}, function(data){
 			wwc.search("#search", "#searchDoc", data);
 		});
@@ -267,12 +277,6 @@
 				});
 
 				return false;
-			});
-		});
-	
-		osapi.people.getViewer().execute(function(viewerData){
-			osapi.jive.corev3.people.get({ "id": viewerData.id }).execute(function(data){
-				console.log(data);	
 			});
 		});
 
