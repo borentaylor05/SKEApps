@@ -191,13 +191,7 @@
 		osapi.jive.corev3.people.get({
  		     id: window.parent._jive_current_user.ID.toString()
  		 }).execute(function(data){
- 		 	var user = {
- 		 		jive_user_id: data.id,
- 		 		employee_id: data.jive.username
- 		 	};
- 		 	gadget_helper.post(environment.remote+"/apps/wwc/new-user", user, function(data){
- 		 		console.log(data);
- 		 	});
+ 		 	console.log(data);
  		 });
 		$(".primary").each(function(){
 			$(this).on("click touch",function(e){
