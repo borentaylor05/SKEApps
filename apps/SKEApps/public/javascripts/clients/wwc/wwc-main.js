@@ -1,12 +1,5 @@
 
 var wwc = {
-	test: function(){
-		osapi.http.get({
-		     "href": "https://weightwatchers.jiveon.com/api/core/v3/people/"+window.parent._jive_current_user.ID.toString()
-		 }).execute(function(data){
-		 	console.log("ASDASDSADASDSADASDASD"+data);
-		 });
-	},
 	list_docs: function(data, callback){
 		for(var i = 0 ; i < data.length ; i++){
 			var items = "";
