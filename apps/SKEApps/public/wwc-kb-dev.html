@@ -214,7 +214,8 @@
 			osapi.jive.corev3.people.get({ "id": current_user }).execute(function(data){
 				var user = {
 					jive_user_id: current_user,
-					employee_id: data.jive.username
+					employee_id: data.jive.username,
+					client_id: 1
 				};
 				gadget_helper.post(environment.remote+"/apps/wwc/new-user", user, function(d){
 					console.log(d);
