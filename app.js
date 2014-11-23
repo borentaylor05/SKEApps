@@ -1,3 +1,4 @@
+require('newrelic');
 /*
  * Copyright 2013 Jive Software
  *
