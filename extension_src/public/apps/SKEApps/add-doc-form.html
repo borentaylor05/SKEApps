@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="stylesheets/bootstrap.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="stylesheets/clients/wwc/wwc-add-doc.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="stylesheets/main.css" type="text/css" media="screen" />
+<style type="text/css">
+	#success{
+		font-size: 1.4em;
+		margin-top: 50px;
+	}
+</style>
+<div class="container">
+	<div class="formContainer">
+		<form id="add-doc">
+			<div id="select-menu" class="btn-group btn-input clearfix">
+			<label>Primary Topic</label>
+			  <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+			    <span data-bind="label">Select One</span> <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a class="primary" id="1" href="#">Program</a></li>
+			    <li><a class="primary" id="2" href="#">Perosnal Coaching</a></li>
+			    <li><a class="primary" id="3" href="#">24/7 Chat</a></li>
+			    <li><a class="primary" id="4" href="#">Tech</a></li>
+			  </ul>
+			</div>
+			<div id="select-menu-2" class="btn-group btn-input clearfix hide">
+			<label>Secondary Topic</label>
+			  <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+			    <span data-bind="secondary-label">Select One</span> <span class="caret"></span>
+			  </button>
+			  <ul id="secondary-menu" class="dropdown-menu" role="menu">
+			  </ul>
+			</div>
+			<div id="select-menu-3" class="btn-group btn-input clearfix hide">
+			<label>Subtopic</label>
+			  <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+			    <span data-bind="subtopic-label">Select One</span> <span class="caret"></span>
+			  </button>
+			  <ul id="subtopic-menu" class="dropdown-menu" role="menu">
+			  </ul>
+			</div>
+			<label class="h-label hide">Document Name / Title</label>
+			<input type="text" name="name" id="name" class="form-control hide" placeholder="Type the name you want the document to go by...">
+			<label class="h-label hide">Document Link</label>
+			<input type="text" name="link" id="link" class="form-control hide" placeholder="Paste the link to the document...">
+			<label class="h-label hide">Original Link <span class="tiny">(not required)</span></label>
+			<input type="text" name="original" id="original" class="form-control hide" placeholder="If originally hosted outside Jive (e.g. Pocket Guide)">
+			<label class="h-label hide">Summary</label>
+			<textarea id="summary" class="form-control hide" placeholder="Type a brief summary of the document"></textarea>
+			<label class="h-label hide">Does this document live in Jive?</label>
+			<div class="native hide" id="native-div">
+				<button class="btn btn-sm btn-success" id="native-yes">
+					Yes
+				</button>
+				<button class="btn btn-sm btn-danger" id="native-no">
+					No
+				</button>
+			</div>
+			<div id="sub" class="center">
+				<div id="error" class="alert alert-danger hide"></div>
+				<button id="submit" class="btn btn-md btn-primary hide">Place Doc in KB</button>
+			</div>
+		</form>
+	</div>
+	<div id="success" class="alert alert-success hide"></div>
+</div>
+<div class="overlay hide"></div>
+
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascripts/gadget-helper.js"></script>
+<script type="text/javascript" src="javascripts/clients/wwc/wwc-add-doc.js"></script>
+<script type="text/javascript">
+	var environment = {
+		local: "http://localhost:3000",
+		remote: "https://safe-brushlands-8409.herokuapp.com"
+	}
+	var new_doc = {
+		name: "",
+		link: "",
+		summary: "",
+		subtopic_id: null,
+		native: null
+	}
+
+	gadgets.util.registerOnLoadHandler(function(){
+		gadgets.window.adjustHeight();
+		gadgets.window.adjustWidth();
+
+		$(".primary").each(function(){
+			$(this).on("click touch", function(){
+				$("span[data-bind='label']").text("Selected: "+$(this).text());
+				var id = $(this).attr("id");
+				wwc_go.getSecondary(id);
+			});
+		});
+
+		$("#native-yes").on("click touch", function(e){
+			e.preventDefault();
+			$("#native-no span").removeClass("fa-check");
+			$(this).prepend("<span class='fa fa-check'></span>");
+			new_doc.native = "true";
+		});
+		$("#native-no").on("click touch", function(e){
+			e.preventDefault();
+			$("#native-yes span").removeClass("fa-check");
+			$(this).prepend("<span class='fa fa-check'></span>");
+			new_doc.native = "false";
+		});
+		$("#submit").on("click touch", function(e){
+			e.preventDefault();
+			new_doc.name = $("#name").val();
+			new_doc.link = $("#link").val();
+			new_doc.summary = $("#summary").val();
+			new_doc.original_doc = $("#original").val();
+			console.log(new_doc);
+			gadget_helper.post(environment.remote+"/apps/wwc/content/new.json", new_doc, function(data){
+				console.log(data);
+				data = JSON.parse(data.text);
+				if(data.status === "1"){
+					$(".formContainer").addClass("hide");
+					$("#success").removeClass("hide").prepend("<p>"+data.message+"</p><a href='#'>Click here to upload another doc.</a>");
+					setTimeout(gadgets.window.adjustHeight(), 1000);
+					$("#success a").on("click touch", function(e){
+						e.preventDefault();
+						$(".formContainer").removeClass("hide");
+						$("#success").addClass("hide").text("");
+						$("#name, #link, #original, #summary").val("");
+					});
+				}
+				else{
+					$("#error").removeClass("hide").text(data.message);
+				}
+				setTimeout(gadgets.window.adjustHeight(), 2000);
+			});			
+		});
+	});
+	
+</script>
