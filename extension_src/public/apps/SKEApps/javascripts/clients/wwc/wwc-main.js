@@ -16,11 +16,8 @@ var wwc = {
 					var classes = "link-header sub-header";
 					var id = this.get_doc_from_link(data[i].docs[x].link);
 					var target = "_self";
-				}
-				if(data[i].docs[x].original_doc && data[i].docs[x].original_doc.length > 5)
-					var rel = data[i].docs[x].original_doc;
-				else					
-					var rel = data[i].docs[x].link;
+				}		
+				var rel = data[i].docs[x].link;
 
 				items += "<li><h3><a rel="+rel+" target="+target+" href='"+href+"' id='"+id+"' class='"+classes+"'>"+data[i].docs[x].name+"</a></h3><p class='summary'>"+data[i].docs[x].summary+"</p></li>";
 			}
@@ -90,7 +87,7 @@ var wwc = {
 		 	}
 			if(data.hasOwnProperty('list') && data.list.length > 0){
 				$(".doc-container").html(data.list[0].content.text);
-				$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="'+curDoc.original+'">Click here to see original document.</a></span></h1>');
+				$(".doc-container").prepend('<h1 class="header">'+curDoc.title+'<span class="original"><a target="_blank" href="https://weightwatchers.jiveon.com/docs/'+curDoc.num+'">Click here to see original document.</a></span></h1>');
 				$(".doc-container").append("</br>");
 				wwc.nav_fix();
 			//	wwc.link_fix();
